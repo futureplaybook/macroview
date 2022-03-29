@@ -1,1 +1,1 @@
-var meta = {"name": "NZDUSD", "currentUpdate": "29-03-22", "currentValue": 0.6900835037231445, "minDate": "07-08-18", "minValue": 0.5626100301742554, "maxDate": "29-03-22", "maxValue": 0.7445295453071594, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_NZDUSD.json"};
+var meta = {"name": "NZDUSD", "currentUpdate": "30-03-22", "currentValue": 0.6947821974754333, "minDate": "08-08-18", "minValue": 0.5626100301742554, "maxDate": "30-03-22", "maxValue": 0.7445295453071594, "lastUpdate": "30/03/2022 07:44:39", "dataFilename": "/macroview/data/data_NZDUSD.json"};

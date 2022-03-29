@@ -1,1 +1,1 @@
-var meta = {"name": "EURUSD", "currentUpdate": "29-03-22", "currentValue": 1.1052166223526, "minDate": "07-08-18", "minValue": 1.0657345056533813, "maxDate": "29-03-22", "maxValue": 1.2341108322143555, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_EURUSD.json"};
+var meta = {"name": "EURUSD", "currentUpdate": "30-03-22", "currentValue": 1.1096316576004028, "minDate": "08-08-18", "minValue": 1.0657345056533813, "maxDate": "30-03-22", "maxValue": 1.2341108322143555, "lastUpdate": "30/03/2022 07:44:39", "dataFilename": "/macroview/data/data_EURUSD.json"};

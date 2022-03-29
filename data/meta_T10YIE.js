@@ -1,1 +1,1 @@
-var meta = {"name": "Breakeven Rate", "currentUpdate": "28-03-22", "currentValue": 2.95, "minDate": "02-01-03", "minValue": 0.04, "maxDate": "28-03-22", "maxValue": 2.95, "lastUpdate": "29/03/2022 18:37:26", "dataFilename": "/data/data_Breakeven Rate.json"};
+var meta = {"name": "Breakeven Rate", "currentUpdate": "29-03-22", "currentValue": 2.86, "minDate": "02-01-03", "minValue": 0.04, "maxDate": "29-03-22", "maxValue": 2.95, "lastUpdate": "30/03/2022 07:45:14", "dataFilename": "/macroview/data/data_Breakeven Rate.json"};

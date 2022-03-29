@@ -1,1 +1,1 @@
-var meta = {"name": "SPLG", "currentUpdate": "28-03-22", "currentValue": 53.61000061035156, "minDate": "20-06-18", "minValue": 25.374528884887695, "maxDate": "28-03-22", "maxValue": 56.010986328125, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_SPLG.json"};
+var meta = {"name": "SPLG", "currentUpdate": "29-03-22", "currentValue": 54.29999923706055, "minDate": "21-06-18", "minValue": 25.37453269958496, "maxDate": "29-03-22", "maxValue": 56.010986328125, "lastUpdate": "30/03/2022 07:44:39", "dataFilename": "/macroview/data/data_SPLG.json"};
