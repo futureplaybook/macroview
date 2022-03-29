@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Our superheroes</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#nav").load("nav.html");
+                $("#bottom").load("bottom.html");
+            });
+        </script>
+        <script>
+        //https://demo-live-data.highcharts.com/aapl-c.json
+        Highcharts.getJSON('https://futureplaybook.github.io/demoHTML/k.json', function (data) {
+            // Create the chart
+            Highcharts.stockChart('container', {
+
+
+                rangeSelector: {
+                    selected: 5
+                },
+
+                title: {
+                    text: 'AAPL Stock Price'
+                },
+
+                subtitle: {
+                    text: 'More details here'
+                },
+
+                yAxis: {
+                    title: {
+                        text: 'Exchange rate'
+                    }
+                },
+
+                legend: {
+                    enabled: true
+                },
+
+                series: [{
+                    name: 'AAPL',
+                    data: data,
+                    tooltip: {
+                        valueDecimals: 2
+                    }
+                }]
+            });
+        });
+
+
+        </script>
+    </head>
+    <body>
+        <div id="nav"></div>
+        <div id="container" style="width:100%; height:400px;"></div>
+        <div id="bottom"></div>
+    </body>
+</html>

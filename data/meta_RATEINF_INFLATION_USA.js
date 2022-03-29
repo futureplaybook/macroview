@@ -1,0 +1,1 @@
+var meta = {"name": "RATEINF_INFLATION_USA", "currentUpdate": "28-02-22", "currentValue": 7.871, "minDate": "31-01-43", "minValue": -2.869, "maxDate": "28-02-22", "maxValue": 19.672, "lastUpdate": "29/03/2022 18:37:06", "dataFilename": "/data/data_RATEINF_INFLATION_USA.json"};

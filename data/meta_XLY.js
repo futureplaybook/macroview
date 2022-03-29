@@ -1,0 +1,1 @@
+var meta = {"name": "XLY", "currentUpdate": "28-03-22", "currentValue": 188.25, "minDate": "20-06-18", "minValue": 85.8261489868164, "maxDate": "28-03-22", "maxValue": 210.780029296875, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_XLY.json"};

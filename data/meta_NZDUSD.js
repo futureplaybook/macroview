@@ -1,0 +1,1 @@
+var meta = {"name": "NZDUSD", "currentUpdate": "29-03-22", "currentValue": 0.6900835037231445, "minDate": "07-08-18", "minValue": 0.5626100301742554, "maxDate": "29-03-22", "maxValue": 0.7445295453071594, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_NZDUSD.json"};

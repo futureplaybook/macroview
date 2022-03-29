@@ -1,0 +1,1 @@
+var meta = {"name": "Shiller PE Ratio", "lastUpdate": "01-03-22", "lastValue": 35.25, "minDate": "01-11-44", "minValue": 6.64, "maxDate": "01-03-22", "maxValue": 44.19};

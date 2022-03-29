@@ -1,0 +1,1 @@
+var meta = {"name": "SPYD", "currentUpdate": "28-03-22", "currentValue": 43.959999084472656, "minDate": "20-06-18", "minValue": 19.321924209594727, "maxDate": "28-03-22", "maxValue": 44.22999954223633, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_SPYD.json"};

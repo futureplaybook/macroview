@@ -1,0 +1,1 @@
+var meta = {"name": "AUDUSD", "currentUpdate": "29-03-22", "currentValue": 0.7500243782997131, "minDate": "07-08-18", "minValue": 0.5742902159690857, "maxDate": "29-03-22", "maxValue": 0.7977026104927063, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_AUDUSD.json"};

@@ -1,0 +1,1 @@
+var meta = {"name": "RUT", "currentUpdate": "28-03-22", "currentValue": 2058.070068359375, "minDate": "20-06-18", "minValue": 991.1599731445312, "maxDate": "28-03-22", "maxValue": 2442.739990234375, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_RUT.json"};

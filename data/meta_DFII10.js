@@ -1,0 +1,1 @@
+var meta = {"name": "Real Yield", "currentUpdate": "25-03-22", "currentValue": -0.47, "minDate": "02-01-03", "minValue": -1.19, "maxDate": "25-03-22", "maxValue": 3.15, "lastUpdate": "29/03/2022 18:37:21", "dataFilename": "/data/data_Real Yield.json"};

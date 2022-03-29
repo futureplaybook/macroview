@@ -1,0 +1,1 @@
+var meta = {"name": "XLF", "currentUpdate": "28-03-22", "currentValue": 39.40999984741211, "minDate": "20-06-18", "minValue": 16.991762161254883, "maxDate": "28-03-22", "maxValue": 41.258567810058594, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_XLF.json"};

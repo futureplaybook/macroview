@@ -1,0 +1,1 @@
+var meta = {"name": "DJI", "currentUpdate": "28-03-22", "currentValue": 34955.890625, "minDate": "20-06-18", "minValue": 18591.9296875, "maxDate": "28-03-22", "maxValue": 36799.6484375, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_DJI.json"};

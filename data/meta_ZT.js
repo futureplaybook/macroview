@@ -1,0 +1,1 @@
+var meta = {"name": "ZT", "currentUpdate": "29-03-22", "currentValue": 105.671875, "minDate": "22-06-18", "minValue": 105.15625, "maxDate": "29-03-22", "maxValue": 110.5078125, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_ZT.json"};

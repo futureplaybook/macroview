@@ -1,0 +1,1 @@
+var meta = {"name": "SPMD", "currentUpdate": "28-03-22", "currentValue": 47.560001373291016, "minDate": "20-06-18", "minValue": 20.811643600463867, "maxDate": "28-03-22", "maxValue": 50.68279266357422, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_SPMD.json"};

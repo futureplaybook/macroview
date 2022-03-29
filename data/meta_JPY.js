@@ -1,0 +1,1 @@
+var meta = {"name": "JPY", "currentUpdate": "29-03-22", "currentValue": 123.5510025024414, "minDate": "07-08-18", "minValue": 102.6780014038086, "maxDate": "29-03-22", "maxValue": 123.5510025024414, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_JPY.json"};

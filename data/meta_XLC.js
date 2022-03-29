@@ -1,0 +1,1 @@
+var meta = {"name": "XLC", "currentUpdate": "28-03-22", "currentValue": 69.4000015258789, "minDate": "20-06-18", "minValue": 37.929351806640625, "maxDate": "28-03-22", "maxValue": 85.50932312011719, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_XLC.json"};

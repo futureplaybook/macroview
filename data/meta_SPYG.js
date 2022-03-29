@@ -1,0 +1,1 @@
+var meta = {"name": "SPYG", "currentUpdate": "28-03-22", "currentValue": 66.9800033569336, "minDate": "20-06-18", "minValue": 29.285259246826172, "maxDate": "28-03-22", "maxValue": 73.34980010986328, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_SPYG.json"};

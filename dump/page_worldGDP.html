@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+        <!-- Step 1) Load D3.js -->
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <!-- Step 2) Load billboard.js with style -->
+        <script src="billboard.js"></script>
+        <!-- Load with base style -->
+        <link rel="stylesheet" href="billboard.css">
+        <!-- Or load different theme style -->
+        <link rel="stylesheet" href="insight.css">
+        <script src="data_worldGDP.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#nav").load("nav.html");
+                $("#bottom").load("bottom.html");
+            });
+        </script>
+    </head>
+    <body>
+        <div id="nav"></div>
+        <div id="timeseriesChart"></div>
+        <div id="bottom"></div>
+        <script>
+            var chart = bb.generate({
+            data: {
+                xs: {
+                    data1: "x1",
+                    //data2: "x2",
+                    //data3: "x3",
+                },
+                columns: [
+                x1,
+                //["x2", "2013-01-01", "2013-01-02", "2013-01-03", "2013-01-04", "2013-01-05", "2013-01-06",],
+                //["x3", "2013-01-01", "2013-01-04", "2013-01-06",],
+                data1,
+                //["data2", 130, 340, 200, 500, 250, 950,],
+                //["data3", 300, 600, 350]
+                ],
+                type: "line", // for ESM specify as: line()
+            },
+            axis: {
+                x: {
+                type: "timeseries",
+                tick: {
+                    format: "%Y-%m-%d"
+                }
+                }
+            },
+            regions: [
+                {
+                start: "2013-01-02",
+                end: "2013-01-04"
+                }
+            ],
+            grid: {
+                x: {
+                lines: [
+                    {
+                    value: "2013-01-02",
+                    text: "Financial Crisis"
+                    },
+                ]
+                }
+            },
+            point: {
+                focus: {
+                    only: true
+                }
+            },
+            transition: {
+                // remove the transition animation
+                duration: 0
+            },
+            zoom: {
+                enabled: false // for ESM specify as: zoom()
+            },
+            bindto: "#timeseriesChart"
+            });
+
+            setTimeout(function() {
+                chart.load();
+            }, 1000);
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+var meta = {"name": "XLP", "currentUpdate": "28-03-22", "currentValue": 75.3499984741211, "minDate": "20-06-18", "minValue": 44.790523529052734, "maxDate": "28-03-22", "maxValue": 77.26951599121094, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_XLP.json"};

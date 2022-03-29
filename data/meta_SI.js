@@ -1,0 +1,1 @@
+var meta = {"name": "SI", "currentUpdate": "29-03-22", "currentValue": 24.735000610351562, "minDate": "21-06-18", "minValue": 11.734999656677246, "maxDate": "29-03-22", "maxValue": 29.398000717163086, "lastUpdate": "29/03/2022 18:36:51", "dataFilename": "/data/data_SI.json"};
