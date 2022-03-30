@@ -1,1 +1,1 @@
-var meta = {"name": "RUT", "currentUpdate": "29-03-22", "currentValue": 2133.10009765625, "minDate": "21-06-18", "minValue": 991.1599731445312, "maxDate": "29-03-22", "maxValue": 2442.739990234375, "lastUpdate": "30/03/2022 08:51:14", "dataFilename": "/macroview/data/data_RUT.json"};
+var meta = {"name": "RUT", "currentUpdate": "29-03-22", "currentValue": 2133.10009765625, "minDate": "21-06-18", "minValue": 991.1599731445312, "maxDate": "29-03-22", "maxValue": 2442.739990234375, "lastUpdate": "30/03/2022 14:54:21", "dataFilename": "/macroview/data/data_RUT.json"};
