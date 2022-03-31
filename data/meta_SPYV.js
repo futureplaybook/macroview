@@ -1,1 +1,1 @@
-var meta = {"name": "SPYV", "currentUpdate": "31-03-22", "currentValue": 42.26499938964844, "minDate": "02-10-00", "minValue": 6.4163055419921875, "maxDate": "31-03-22", "maxValue": 42.45071792602539, "lastUpdate": "31/03/2022 23:49:34", "dataFilename": "/macroview/data/data_SPYV.json"};
+var meta = {"name": "SPYV", "currentUpdate": "31-03-22", "currentValue": 42.25, "minDate": "02-10-00", "minValue": 6.4163055419921875, "maxDate": "31-03-22", "maxValue": 42.45071792602539, "lastUpdate": "01/04/2022 00:04:31", "dataFilename": "/macroview/data/data_SPYV.json"};
