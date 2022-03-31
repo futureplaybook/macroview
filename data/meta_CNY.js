@@ -1,1 +1,1 @@
-var meta = {"name": "CNY", "currentUpdate": "31-03-22", "currentValue": 6.343200206756592, "minDate": "08-08-18", "minValue": 6.3084001541137695, "maxDate": "31-03-22", "maxValue": 7.177999973297119, "lastUpdate": "31/03/2022 17:04:42", "dataFilename": "/macroview/data/data_CNY.json"};
+var meta = {"name": "CNY", "currentUpdate": "31-03-22", "currentValue": 6.343400001525879, "minDate": "08-08-18", "minValue": 6.3084001541137695, "maxDate": "31-03-22", "maxValue": 7.177999973297119, "lastUpdate": "31/03/2022 17:19:31", "dataFilename": "/macroview/data/data_CNY.json"};
