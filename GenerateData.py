@@ -40,7 +40,7 @@ def generateMetadataFile(dict, fileName):
 # Yahoo Data
 # https://www.ssga.com/library-content/products/fund-docs/etfs/us/information-schedules/spdr-etf-listing.pdf
 tickers_WorldIndex = ['^GSPC','^DJI','^IXIC','^RUT','^VIX','^FTSE','^N225','^HSI']
-tickers_ccy = ['EURUSD=X','JPY=X','GBPUSD=X', 'AUDUSD=X', 'NZDUSD=X','CNY=X','CAD=X']
+tickers_ccy = ['DX-Y.NYB', 'EURUSD=X','JPY=X','GBPUSD=X', 'AUDUSD=X', 'NZDUSD=X','CNY=X','CAD=X']
 tickers_commodities = ['GC=F','SI=F','CL=F']
 tickers_treasury = ['ZT=F','ZN=F','ZB=F']
 
@@ -54,7 +54,7 @@ asOfDateTime = datetime.now()
 asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
 
 for t in tickers_yahoo:
-    name = t.replace('^','').replace('=F','').replace('=X','')
+    name = t.replace('^','').replace('=F','').replace('=X','').replace('DX-Y.NYB','DXY')
     rawData = yf.download(t)
     indexedData = rawData['Adj Close'].tail(950).reset_index()
     indexedData.columns = ['Date','Value']
