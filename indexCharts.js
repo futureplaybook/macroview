@@ -29,6 +29,9 @@ Highcharts.getJSON(dataPathHSI, function(data) {
         scrollbar: {
             enabled: false
         },
+        exporting: {
+            enabled: false
+        },
 
         series: [{
                 name: 'HSi Index',
@@ -109,6 +112,9 @@ Highcharts.getJSON(dataPathJPY, function(data) {
         scrollbar: {
             enabled: false
         },
+        exporting: {
+            enabled: false
+        },
 
         series: [{
                 name: 'Yen',
@@ -181,6 +187,9 @@ Highcharts.getJSON(dataPathShillerPE, function(data) {
             enabled: false
         },
         scrollbar: {
+            enabled: false
+        },
+        exporting: {
             enabled: false
         },
 
@@ -264,6 +273,9 @@ Highcharts.getJSON(dataPathCoreCPI, function(data) {
             enabled: false
         },
         scrollbar: {
+            enabled: false
+        },
+        exporting: {
             enabled: false
         },
 
