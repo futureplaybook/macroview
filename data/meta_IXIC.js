@@ -1,1 +1,1 @@
-var meta = {"name": "IXIC", "currentUpdate": "31-03-22", "currentValue": 14352.1552734375, "minDate": "25-06-18", "minValue": 6192.919921875, "maxDate": "31-03-22", "maxValue": 16057.4404296875, "lastUpdate": "31/03/2022 22:04:38", "dataFilename": "/macroview/data/data_IXIC.json"};
+var meta = {"name": "IXIC", "currentUpdate": "31-03-22", "currentValue": 14412.3603515625, "minDate": "25-06-18", "minValue": 6192.919921875, "maxDate": "31-03-22", "maxValue": 16057.4404296875, "lastUpdate": "31/03/2022 22:19:31", "dataFilename": "/macroview/data/data_IXIC.json"};

@@ -1,1 +1,1 @@
-var meta = {"name": "XLRE", "currentUpdate": "31-03-22", "currentValue": 49.15999984741211, "minDate": "25-06-18", "minValue": 23.911468505859375, "maxDate": "31-03-22", "maxValue": 51.514915466308594, "lastUpdate": "31/03/2022 22:04:38", "dataFilename": "/macroview/data/data_XLRE.json"};
+var meta = {"name": "XLRE", "currentUpdate": "31-03-22", "currentValue": 49.13999938964844, "minDate": "25-06-18", "minValue": 23.911470413208008, "maxDate": "31-03-22", "maxValue": 51.514915466308594, "lastUpdate": "31/03/2022 22:19:31", "dataFilename": "/macroview/data/data_XLRE.json"};
