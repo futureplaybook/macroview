@@ -250,6 +250,7 @@ Highcharts.getJSON(dataPathCoreCPI, function(data) {
             scrollbar: {
                 enabled: false,
             },
+            marginRight: 100
         },
 
         yAxis: {
@@ -277,6 +278,9 @@ Highcharts.getJSON(dataPathCoreCPI, function(data) {
         },
         exporting: {
             enabled: false
+        },
+        chart: {
+            marginRight: 100
         },
 
         series: [{
