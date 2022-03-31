@@ -1,1 +1,1 @@
-var meta = {"name": "VIX", "currentUpdate": "31-03-22", "currentValue": 19.889999389648438, "minDate": "25-06-18", "minValue": 10.850000381469727, "maxDate": "31-03-22", "maxValue": 82.69000244140625, "lastUpdate": "31/03/2022 18:04:32", "dataFilename": "/macroview/data/data_VIX.json"};
+var meta = {"name": "VIX", "currentUpdate": "31-03-22", "currentValue": 19.950000762939453, "minDate": "25-06-18", "minValue": 10.850000381469727, "maxDate": "31-03-22", "maxValue": 82.69000244140625, "lastUpdate": "31/03/2022 18:19:31", "dataFilename": "/macroview/data/data_VIX.json"};

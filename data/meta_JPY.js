@@ -1,1 +1,1 @@
-var meta = {"name": "JPY", "currentUpdate": "31-03-22", "currentValue": 121.91300201416016, "minDate": "09-08-18", "minValue": 102.6780014038086, "maxDate": "31-03-22", "maxValue": 123.66000366210938, "lastUpdate": "31/03/2022 18:04:32", "dataFilename": "/macroview/data/data_JPY.json"};
+var meta = {"name": "JPY", "currentUpdate": "31-03-22", "currentValue": 121.947998046875, "minDate": "09-08-18", "minValue": 102.6780014038086, "maxDate": "31-03-22", "maxValue": 123.66000366210938, "lastUpdate": "31/03/2022 18:19:31", "dataFilename": "/macroview/data/data_JPY.json"};
