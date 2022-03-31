@@ -1,1 +1,1 @@
-var meta = {"name": "DJI", "currentUpdate": "31-03-22", "currentValue": 35097.41015625, "minDate": "02-01-92", "minValue": 3136.60009765625, "maxDate": "31-03-22", "maxValue": 36799.6484375, "lastUpdate": "01/04/2022 00:19:31", "dataFilename": "/macroview/data/data_DJI.json"};
+var meta = {"name": "DJI", "currentUpdate": "31-03-22", "currentValue": 35058.9296875, "minDate": "02-01-92", "minValue": 3136.60009765625, "maxDate": "31-03-22", "maxValue": 36799.6484375, "lastUpdate": "01/04/2022 00:34:31", "dataFilename": "/macroview/data/data_DJI.json"};
