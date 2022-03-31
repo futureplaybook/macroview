@@ -21,11 +21,6 @@
         <script src="/macroview/commoditiesCharts.js"></script>
         <script src="/macroview/data/meta_GC.js"></script>
         <script src="/macroview/data/meta_CL.js"></script>
-        <script>
-                window.onload = function(){
-                    document.getElementById("lastUpdate").innerHTML = 'Last update: ' +  meta["lastUpdate"];
-                };
-        </script>
     </head>
     <body>
         <div id="nav"></div>
@@ -64,8 +59,7 @@
                                     <a href="/macroview/page/page_CL.html" class="btn btn-primary">More details</a>
                                 </div>
                                 <div class="card-footer">
-                                    <small id="lastUpdate" class="text-muted"></small>
-                                    <script>document.getElementById("lastUpdate").innerHTML = 'Last update: ' +  meta["lastUpdate"];</script>
+                                    <small class="text-muted">Last updated 3 mins ago</small>
                                 </div>
                             </div>
                         </div>
