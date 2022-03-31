@@ -1,1 +1,1 @@
-var meta = {"name": "RATEINF_INFLATION_GBR", "currentUpdate": "28-02-2022", "currentValue": 6.1, "minDate": "31-01-1989", "minValue": -0.2, "maxDate": "28-02-2022", "maxValue": 8.5, "lastUpdate": "01/04/2022 02:04:56", "dataFilename": "/macroview/data/data_RATEINF_INFLATION_GBR.json"};
+var meta = {"name": "RATEINF_INFLATION_GBR", "currentUpdate": "28-02-2022", "currentValue": 6.1, "minDate": "31-01-1989", "minValue": -0.2, "maxDate": "28-02-2022", "maxValue": 8.5, "lastUpdate": "01/04/2022 02:20:01", "dataFilename": "/macroview/data/data_RATEINF_INFLATION_GBR.json"};
