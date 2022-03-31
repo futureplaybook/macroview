@@ -13,8 +13,9 @@
         <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
         <script>
             $(document).ready(function() {
-                $("#nav").load("nav.html");
-                $("#bottom").load("bottom.html");
+                $("#nav").load("/macroview/nav.html");
+                $("#menu").load("/macroview/menu.html");
+                $("#bottom").load("/macroview/bottom.html");
             });
         </script>
     </head>
@@ -25,17 +26,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">The current link item</a>
-                        <a href="/macroview/page_commodities.html"
-                           class="list-group-item list-group-item-action active">Commodities</a>
-                        <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-                        <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-                    </div>
+                    <div id="menu"></div>
                 </div>
-                <div class="col-10">Column</div>
+                <div class="col-10">Column 2</div>
             </div>
         </div>
+        <p>
+        </p>
         <div id="bottom"></div>
     </body>
 </html>
