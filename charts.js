@@ -28,6 +28,9 @@ Highcharts.getJSON(meta['dataFilename'], function(data) {
         credits: {
             enabled: false
         },
+        exporting: {
+            enabled: false
+        },
 
         series: [{
                 name: meta["name"],

@@ -56,7 +56,8 @@ asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
 for t in tickers_yahoo:
     name = t.replace('^','').replace('=F','').replace('=X','').replace('DX-Y.NYB','DXY')
     rawData = yf.download(t)
-    indexedData = rawData['Adj Close'].tail(950).reset_index()
+    #indexedData = rawData['Adj Close'].tail(950).reset_index()
+    indexedData = rawData['Adj Close'].reset_index()
     indexedData.columns = ['Date','Value']
     highChartTS = GenerateHighchartVar(indexedData, 'Date','Value')
     generateJSONDataFile(name, highChartTS)
@@ -86,16 +87,17 @@ asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
 
 for t in tickers_allNasdaq:
     rawData = quandl.get(t, authtoken="cza_RyNfSzs9o1Z2QBs4")
-    indexedData = rawData.tail(950).reset_index()
+    #indexedData = rawData.tail(950).reset_index()
+    indexedData = rawData.reset_index()
     highChartTS = GenerateHighchartVar(indexedData, 'Date','Value')
     generateJSONDataFile(t.replace('/','_'), highChartTS)
     
     meta = {'name': t.replace('/','_'),
-        'currentUpdate': (indexedData.tail(1)['Date'].item()).strftime('%d-%m-%y'),
+        'currentUpdate': (indexedData.tail(1)['Date'].item()).strftime('%d-%m-%Y'),
         'currentValue' : indexedData.tail(1)['Value'].item(),
-        'minDate' : (indexedData.min()['Date']).strftime('%d-%m-%y'),
+        'minDate' : (indexedData.min()['Date']).strftime('%d-%m-%Y'),
         'minValue' : indexedData.min()['Value'],
-        'maxDate' : (indexedData.max()['Date']).strftime('%d-%m-%y'),
+        'maxDate' : (indexedData.max()['Date']).strftime('%d-%m-%Y'),
         'maxValue' : indexedData.max()['Value'],
         'lastUpdate' : asOfDateTimeStr,
         'dataFilename' : '/macroview/data/data_' + t.replace('/','_') + '.json'
