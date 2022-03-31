@@ -1,1 +1,1 @@
-var meta = {"name": "SPMD", "currentUpdate": "31-03-22", "currentValue": 47.939998626708984, "minDate": "25-06-18", "minValue": 20.811641693115234, "maxDate": "31-03-22", "maxValue": 50.68279266357422, "lastUpdate": "31/03/2022 21:49:38", "dataFilename": "/macroview/data/data_SPMD.json"};
+var meta = {"name": "SPMD", "currentUpdate": "31-03-22", "currentValue": 47.75, "minDate": "25-06-18", "minValue": 20.811641693115234, "maxDate": "31-03-22", "maxValue": 50.68279266357422, "lastUpdate": "31/03/2022 22:04:38", "dataFilename": "/macroview/data/data_SPMD.json"};
