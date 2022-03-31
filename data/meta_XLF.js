@@ -1,1 +1,1 @@
-var meta = {"name": "XLF", "currentUpdate": "31-03-22", "currentValue": 39.0, "minDate": "22-12-98", "minValue": 3.9479856491088867, "maxDate": "31-03-22", "maxValue": 41.258567810058594, "lastUpdate": "01/04/2022 00:04:31", "dataFilename": "/macroview/data/data_XLF.json"};
+var meta = {"name": "XLF", "currentUpdate": "31-03-22", "currentValue": 38.9900016784668, "minDate": "22-12-98", "minValue": 3.9479854106903076, "maxDate": "31-03-22", "maxValue": 41.258567810058594, "lastUpdate": "01/04/2022 00:19:31", "dataFilename": "/macroview/data/data_XLF.json"};
