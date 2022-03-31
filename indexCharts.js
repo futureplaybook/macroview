@@ -249,13 +249,15 @@ Highcharts.getJSON(dataPathCoreCPI, function(data) {
         xAxis: {
             scrollbar: {
                 enabled: false,
-            }
+            },
+            width: '95%'
         },
 
         yAxis: {
             title: {
                 text: 'Exchange rate'
-            }
+            },
+            width: '100%'
         },
 
         legend: {
