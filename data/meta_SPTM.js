@@ -1,1 +1,1 @@
-var meta = {"name": "SPTM", "currentUpdate": "31-03-22", "currentValue": 56.22999954223633, "minDate": "10-10-00", "minValue": 6.4736504554748535, "maxDate": "31-03-22", "maxValue": 58.63284683227539, "lastUpdate": "01/04/2022 03:04:31", "dataFilename": "/macroview/data/data_SPTM.json"};
+var meta = {"name": "SPTM", "currentUpdate": "31-03-22", "currentValue": 56.119998931884766, "minDate": "10-10-00", "minValue": 6.473651885986328, "maxDate": "31-03-22", "maxValue": 58.63284683227539, "lastUpdate": "01/04/2022 03:19:31", "dataFilename": "/macroview/data/data_SPTM.json"};
