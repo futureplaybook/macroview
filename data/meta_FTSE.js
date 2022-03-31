@@ -1,1 +1,1 @@
-var meta = {"name": "FTSE", "currentUpdate": "31-03-22", "currentValue": 7563.4501953125, "minDate": "02-07-18", "minValue": 4993.89990234375, "maxDate": "31-03-22", "maxValue": 7776.7001953125, "lastUpdate": "31/03/2022 18:49:31", "dataFilename": "/macroview/data/data_FTSE.json"};
+var meta = {"name": "FTSE", "currentUpdate": "31-03-22", "currentValue": 7558.18994140625, "minDate": "02-07-18", "minValue": 4993.89990234375, "maxDate": "31-03-22", "maxValue": 7776.7001953125, "lastUpdate": "31/03/2022 19:04:31", "dataFilename": "/macroview/data/data_FTSE.json"};
