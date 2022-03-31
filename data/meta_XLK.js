@@ -1,1 +1,1 @@
-var meta = {"name": "XLK", "currentUpdate": "31-03-22", "currentValue": 158.9600067138672, "minDate": "22-12-98", "minValue": 8.887025833129883, "maxDate": "31-03-22", "maxValue": 176.32418823242188, "lastUpdate": "01/04/2022 04:04:31", "dataFilename": "/macroview/data/data_XLK.json"};
+var meta = {"name": "XLK", "currentUpdate": "31-03-22", "currentValue": 158.9600067138672, "minDate": "22-12-98", "minValue": 8.8870267868042, "maxDate": "31-03-22", "maxValue": 176.32418823242188, "lastUpdate": "01/04/2022 04:19:32", "dataFilename": "/macroview/data/data_XLK.json"};
