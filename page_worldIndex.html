@@ -15,6 +15,7 @@
             $(document).ready(function() {
                 $("#nav").load("/macroview/nav.html");
                 $("#menu").load("/macroview/menu.html");
+                $("#related").load("/macroview/page_relatedInstruments.html");
                 $("#bottom").load("/macroview/bottom.html");
             });
         </script>
@@ -65,139 +66,12 @@
                     </div>
                     <p>
                     </p>
-                    <h1 style="display: block; font-size: 1.5em;">Related Instruments</h1>
-                    <div class="row row-cols-1 row-cols-md-4 g-4">
-                        <div class="col-1">
-                            <div class="card">
-                                <img src="/macroview/img/wallStreet.jpg"
-                                     class="card-img-top"
-                                     alt="US Market">
-                                <div class="card-body">
-                                    <h5 class="card-title">US Market</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                                    </p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <a href="#" class="list-group-item">A</a>
-                                    <a href="#" class="list-group-item">B</a>
-                                    <a href="#" class="list-group-item">A third item</a>
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">
-                                        Another link
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <div class="card">
-                                <img src="/macroview/img/europe.jpg"
-                                     class="card-img-top"
-                                     alt="UK/Europe Market">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        UK/Europe Market
-                                    </h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                                    </p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <a href="#" class="list-group-item">
-                                        A
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        B
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        A third item
-                                    </a>
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="card-link">
-                                        Card link
-                                    </a>
-                                    <a href="#" class="card-link">
-                                        Another link
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <div class="card">
-                                <img src="/macroview/img/em.jpg"
-                                     class="card-img-top"
-                                     alt="Emerging Market">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        Emerging Market
-                                    </h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                                    </p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <a href="/macroview/page/page_CL.html" class="list-group-item">
-                                        Crude
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        Natural Gas
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        A third item
-                                    </a>
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="card-link">
-                                        Card link
-                                    </a>
-                                    <a href="#" class="card-link">
-                                        Another link
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <div class="card">
-                                <img src="/macroview/img/currency.jpg" class="card-img-top" alt="Currency">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        Currency
-                                    </h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                                    </p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <a href="#" class="list-group-item">
-                                        A
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        B
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        A third item
-                                    </a>
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="card-link">
-                                        Card link
-                                    </a>
-                                    <a href="#" class="card-link">
-                                        Another link
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="related"></div>
                 </div>
             </div>
         </div>
         <p>
         </p>
-        <div id="bottom">
-        </div>
+        <div id="bottom"></div>
     </body>
 </html>

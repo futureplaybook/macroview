@@ -1,1 +1,1 @@
-var meta = {"name": "SI", "currentUpdate": "31-03-22", "currentValue": 24.979999542236328, "minDate": "25-06-18", "minValue": 11.734999656677246, "maxDate": "31-03-22", "maxValue": 29.398000717163086, "lastUpdate": "31/03/2022 20:19:31", "dataFilename": "/macroview/data/data_SI.json"};
+var meta = {"name": "SI", "currentUpdate": "31-03-22", "currentValue": 25.075000762939453, "minDate": "25-06-18", "minValue": 11.734999656677246, "maxDate": "31-03-22", "maxValue": 29.398000717163086, "lastUpdate": "31/03/2022 20:49:32", "dataFilename": "/macroview/data/data_SI.json"};
