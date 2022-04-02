@@ -1,1 +1,1 @@
-var meta = {"name": "Real Yield", "currentUpdate": "31-03-22", "currentValue": -0.52, "minDate": "02-01-03", "minValue": -1.19, "maxDate": "31-03-22", "maxValue": 3.15, "lastUpdate": "02/04/2022 16:05:10", "dataFilename": "/macroview/data/data_Real Yield.json"};
+var meta = {"name": "DFII10", "currentUpdate": "31-03-22", "currentValue": -0.52, "minDate": "02-01-03", "minValue": -1.19, "maxDate": "31-03-22", "maxValue": 3.15, "lastUpdate": "02/04/2022 19:05:09", "dataFilename": "/macroview/data/data_DFII10.json"};

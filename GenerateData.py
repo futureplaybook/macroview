@@ -74,6 +74,8 @@ for t in tickers_yahoo:
         }
     
     generateMetadataFile(meta, name)
+    
+print('Successfully download Yahoo data')
 
 # %%
 # Nasdaq Data
@@ -105,6 +107,8 @@ for t in tickers_allNasdaq:
     
     generateMetadataFile(meta, t.replace('/','_'))
 
+
+print('Successfully download Nasdaq data')
 
 
 
@@ -154,10 +158,11 @@ generateJSONDataFile('headlineCPIYOY', highChartTS)
 #10y2y yield spread
 series = 'T10Y2Y' 
 df = fred.get_series(series)
+df = df.dropna()
 df_reset = df.reset_index()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, '10y2y Yield Spread')
+meta = generateFredMeta(df_reset, series)
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
@@ -166,10 +171,11 @@ generateJSONDataFile(series, highChartTS)
 #Real Yield
 series = 'DFII10' 
 df = fred.get_series(series)
+df = df.dropna()
 df_reset = df.reset_index()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, 'Real Yield')
+meta = generateFredMeta(df_reset, series)
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
@@ -179,10 +185,12 @@ generateJSONDataFile(series, highChartTS)
 #Nominal Yield
 series = 'DGS10' 
 df = fred.get_series(series)
+df = df.dropna()
 df_reset = df.reset_index()
+df_reset = df_reset.dropna()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, 'Nominal Yield')
+meta = generateFredMeta(df_reset, series)
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
@@ -191,10 +199,14 @@ generateJSONDataFile(series, highChartTS)
 #Breakeven Rate
 series = 'T10YIE' 
 df = fred.get_series(series)
+df = df.dropna()
 df_reset = df.reset_index()
+df_reset = df_reset.dropna()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, 'Breakeven Rate')
+meta = generateFredMeta(df_reset, series)
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
+
+print('Successfully download Fred data')
 
