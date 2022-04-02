@@ -1,1 +1,1 @@
-var meta = {"name": "GSPC", "currentUpdate": "31-03-22", "currentValue": 4530.41015625, "minDate": "03-01-50", "minValue": 16.65999984741211, "maxDate": "31-03-22", "maxValue": 4796.56005859375, "lastUpdate": "01/04/2022 05:19:31", "dataFilename": "/macroview/data/data_GSPC.json"};
+var meta = {"name": "GSPC", "currentUpdate": "01-04-22", "currentValue": 4545.85986328125, "minDate": "03-01-50", "minValue": 16.65999984741211, "maxDate": "01-04-22", "maxValue": 4796.56005859375, "lastUpdate": "02/04/2022 15:19:31", "dataFilename": "/macroview/data/data_GSPC.json"};
