@@ -1,1 +1,1 @@
-var meta = {"name": "CAD", "currentUpdate": "02-04-22", "currentValue": 1.2515000104904175, "minDate": "17-09-03", "minValue": 0.9186999797821045, "maxDate": "02-04-22", "maxValue": 1.457800030708313, "lastUpdate": "02/04/2022 15:34:30", "dataFilename": "/macroview/data/data_CAD.json"};
+var meta = {"name": "CAD", "currentUpdate": "02-04-22", "currentValue": 1.2515000104904175, "minDate": "17-09-03", "minValue": 0.9186999797821045, "maxDate": "02-04-22", "maxValue": 1.457800030708313, "lastUpdate": "02/04/2022 16:04:30", "dataFilename": "/macroview/data/data_CAD.json"};
