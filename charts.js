@@ -16,10 +16,18 @@ Highcharts.getJSON(meta['dataFilename'], function(data) {
             text: 'Data ranged from ' + meta['dataFrom'] + ' - ' + meta['dataTo']
         },
 
+        xAxis: {
+            width: '95%'
+        },
+
         yAxis: {
             title: {
                 text: ''
-            }
+            },
+            width: '100%'
+        },
+        scrollbar: {
+            enabled: false
         },
 
         legend: {
