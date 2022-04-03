@@ -9,7 +9,7 @@ Highcharts.getJSON(meta['dataFilename'], function(data) {
         },
 
         title: {
-            text: meta["name"]
+            text: meta["displayName"]
         },
 
         subtitle: {

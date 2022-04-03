@@ -1,1 +1,1 @@
-var meta = {"name": "T10Y2Y", "currentUpdate": "01-04-22", "currentValue": -0.06, "minDate": "01-06-76", "minValue": -2.41, "maxDate": "01-04-22", "maxValue": 2.91, "lastUpdate": "02/04/2022 19:05:08", "dataFilename": "/macroview/data/data_T10Y2Y.json"};
+var meta = {"name": "T10Y2Y", "displayName": "US 10-2 Year Treasury Yield Spread", "currentUpdate": "01-04-22", "currentValue": -0.06, "minDate": "01-06-76", "minValue": -2.41, "maxDate": "01-04-22", "maxValue": 2.91, "lastUpdate": "03/04/2022 10:50:09", "dataFilename": "/macroview/data/data_T10Y2Y.json"};

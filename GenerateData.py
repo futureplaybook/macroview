@@ -39,15 +39,15 @@ def generateMetadataFile(dict, fileName):
 # %%
 # Yahoo Data
 # https://www.ssga.com/library-content/products/fund-docs/etfs/us/information-schedules/spdr-etf-listing.pdf
-tickers_WorldIndex = ['^GSPC','^DJI','^IXIC','^RUT','^VIX','^FTSE','^N225','^HSI']
-tickers_ccy = ['DX-Y.NYB', 'EURUSD=X','JPY=X','GBPUSD=X', 'AUDUSD=X', 'NZDUSD=X','CNY=X','CAD=X']
-tickers_commodities = ['GC=F','SI=F','CL=F']
-tickers_treasury = ['ZT=F','ZN=F','ZB=F']
+tickers_WorldIndex = {'^GSPC' : 'SP500','^DJI' : 'Dow Jones','^IXIC' : 'Nasdaq','^RUT' : 'Russell 2000','^VIX' : 'VIX','^FTSE' : 'FTSE 100','^N225' : 'Nikkei 225','^HSI' : 'Hang Seng Index'}
+tickers_ccy = {'DX-Y.NYB' : 'USD', 'EURUSD=X' : 'EURUSD','JPY=X' : 'USDJPY','GBPUSD=X' : 'GBPUSD', 'AUDUSD=X' : 'AUDUSD', 'NZDUSD=X' : 'NZDUSD','CNY=X' : 'CNY','CAD=X' : 'USDCAD'}
+tickers_commodities = {'GC=F' : 'Gold','SI=F' : 'Silver','CL=F' : 'Crude'}
+tickers_treasury = {'ZT=F' : 'US 2-Year Note','ZN=F' : 'US 10-Year Note','ZB=F' : 'US Treasury'}
 
-tickers_sector = ['XLC','XLP','XLY','XLE','XLF','XLV','XLI','XLB','XLRE','XLK','XLU']
-tickers_style = ['SPTM','SPLG','SPMD','SPSM','SPYG','SPYV','SPYD']
+tickers_sector = {'XLC' : 'Communication Service','XLP' : 'Consumer Staples','XLY' : 'Consumer Discretionary','XLE' : 'Energy','XLF' : 'Financial','XLV' : 'Health Care','XLI' : 'Industrial','XLB' : 'Materials','XLRE' : 'Real Estate','XLK' : 'Technology','XLU' : 'Utilities'}
+tickers_style = {'SPTM' : 'SP 1500','SPLG' : 'Large Cap','SPMD' : 'Mid Cap','SPSM'  : 'Small Cap','SPYG'  : 'Growth','SPYV' : 'Value','SPYD' : 'High Dividend Yield'}
 
-tickers_yahoo = tickers_WorldIndex+tickers_ccy+tickers_commodities+tickers_treasury+tickers_sector+tickers_style
+tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **tickers_treasury, **tickers_sector, **tickers_style}
 
 
 asOfDateTime = datetime.now()
@@ -63,6 +63,7 @@ for t in tickers_yahoo:
     generateJSONDataFile(name, highChartTS)
     
     meta = {'name': name,
+            'displayName': tickers_yahoo[t],
         'currentUpdate': (indexedData.tail(1)['Date'].item()).strftime('%d-%m-%y'),
         'currentValue' : indexedData.tail(1)['Value'].item(),
         'minDate' : (indexedData.min()['Date']).strftime('%d-%m-%y'),
@@ -79,10 +80,10 @@ print('Successfully download Yahoo data')
 
 # %%
 # Nasdaq Data
-tickers_spRatio = ["MULTPL/SHILLER_PE_RATIO_MONTH","MULTPL/SP500_DIV_YIELD_MONTH","MULTPL/SP500_PE_RATIO_MONTH","MULTPL/SP500_EARNINGS_YIELD_MONTH","MULTPL/SP500_PBV_RATIO_QUARTER","MULTPL/SP500_PSR_QUARTER"]
-tickers_worldInflationYoY = ["RATEINF/INFLATION_USA","RATEINF/INFLATION_GBR","RATEINF/INFLATION_EUR","RATEINF/INFLATION_JPN"]
+tickers_spRatio = {"MULTPL/SHILLER_PE_RATIO_MONTH" : 'Shiller PE Ratio',"MULTPL/SP500_DIV_YIELD_MONTH" : 'S&P500 Dividend Yield',"MULTPL/SP500_PE_RATIO_MONTH" : 'S&P 500 PE Ratio',"MULTPL/SP500_EARNINGS_YIELD_MONTH" : 'S&P 500 Earning Yield',"MULTPL/SP500_PBV_RATIO_QUARTER" : 'S&P 500 Price to Book Ratio',"MULTPL/SP500_PSR_QUARTER" : 'S&P 500 Price to Sales Ratio'}
+tickers_worldInflationYoY = {"RATEINF/INFLATION_USA" : 'US Inflation',"RATEINF/INFLATION_GBR" : 'UK Inflation',"RATEINF/INFLATION_EUR" : 'Euro Area Inflation',"RATEINF/INFLATION_JPN" : 'Japan Inflation'}
 
-tickers_allNasdaq = tickers_spRatio + tickers_worldInflationYoY
+tickers_allNasdaq = {**tickers_spRatio, **tickers_worldInflationYoY}
 
 asOfDateTime = datetime.now()
 asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
@@ -95,6 +96,7 @@ for t in tickers_allNasdaq:
     generateJSONDataFile(t.replace('/','_'), highChartTS)
     
     meta = {'name': t.replace('/','_'),
+            'displayName': tickers_allNasdaq[t],
         'currentUpdate': (indexedData.tail(1)['Date'].item()).strftime('%d-%m-%Y'),
         'currentValue' : indexedData.tail(1)['Value'].item(),
         'minDate' : (indexedData.min()['Date']).strftime('%d-%m-%Y'),
@@ -117,10 +119,11 @@ print('Successfully download Nasdaq data')
 
 fred = Fred(api_key='d79cebb1e12819cd44ed96cc291f0f72')
 
-def generateFredMeta(indexedData, name = ''):
+def generateFredMeta(indexedData, name = '', displayName = ''):
     asOfDateTime = datetime.now()
     asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
     meta = {'name': name,
+            'displayName': displayName,
             'currentUpdate': (indexedData.tail(1)['Date'].item()).strftime('%d-%m-%y'),
             'currentValue' : indexedData.tail(1)['Value'].item(),
             'minDate' : (indexedData.min()['Date']).strftime('%d-%m-%y'),
@@ -139,7 +142,7 @@ coreCPIYOY = coreCPIYOY.dropna()
 coreCPIYOY_reset = coreCPIYOY.reset_index()
 coreCPIYOY_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(coreCPIYOY_reset, 'Date','Value')
-meta = generateFredMeta(coreCPIYOY_reset, 'coreCPIYOY')
+meta = generateFredMeta(coreCPIYOY_reset, 'coreCPIYOY', 'US Core CPI')
 generateMetadataFile(meta, 'coreCPIYOY')
 generateJSONDataFile('coreCPIYOY', highChartTS)
 
@@ -150,7 +153,7 @@ headlineCPIYOY = headlineCPIYOY.dropna()
 headlineCPIYOY_reset = headlineCPIYOY.reset_index()
 headlineCPIYOY_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(headlineCPIYOY_reset, 'Date','Value')
-meta = generateFredMeta(headlineCPIYOY_reset, 'headlineCPIYOY')
+meta = generateFredMeta(headlineCPIYOY_reset, 'headlineCPIYOY', 'US Headline CPI')
 generateMetadataFile(meta, 'headlineCPIYOY')
 generateJSONDataFile('headlineCPIYOY', highChartTS)
 
@@ -162,7 +165,7 @@ df = df.dropna()
 df_reset = df.reset_index()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, series)
+meta = generateFredMeta(df_reset, series, 'US 10-2 Year Treasury Yield Spread')
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
@@ -175,7 +178,7 @@ df = df.dropna()
 df_reset = df.reset_index()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, series)
+meta = generateFredMeta(df_reset, series, 'US Real Yield')
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
@@ -190,7 +193,7 @@ df_reset = df.reset_index()
 df_reset = df_reset.dropna()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, series)
+meta = generateFredMeta(df_reset, series, 'US Nominal Yield')
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
@@ -204,7 +207,7 @@ df_reset = df.reset_index()
 df_reset = df_reset.dropna()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, series)
+meta = generateFredMeta(df_reset, series, 'US 10-Year Breakeven Inflation Rate')
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
