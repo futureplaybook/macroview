@@ -1,4 +1,5 @@
-<html>
+
+    <html>
     <head>
         <meta charset="utf-8">
         <meta property="og:title" content="TITLE OF YOUR WEBSITE"/>
@@ -22,8 +23,8 @@
               href="https://cdn.jsdelivr.net/gh/vaakash/socializer@2f749eb/css/socializer.min.css">
         <link rel="stylesheet"
               href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-        <script src="/macroview/data/meta_MULTPL_SHILLER_PE_RATIO_MONTH.js"></script>
-        <script src="/macroview/charts.js"></script>
+    <script src="/macroview/data/meta_MULTPL_SHILLER_PE_RATIO_MONTH.js"></script>
+    <script src="/macroview/charts.js"></script>
         <script>
                 $(document).ready(function() {
                     $("#nav").load("/macroview/nav.html");
@@ -35,12 +36,12 @@
         <script>
                 window.onload = function(){
                     document.getElementById("name").innerHTML = meta["displayName"];
-                    document.getElementById("dateRange").innerHTML = 'Data history ranged between: ' + meta["dataFrom"] + ' - ' + meta["dataTo"];
-                    document.getElementById("currentUpdate").innerHTML = 'Current update: ' +  meta["currentUpdate"];
-                    document.getElementById("currentValue").innerHTML = 'Current value: ' +  meta["currentValue"].toFixed(2);
-                    document.getElementById("min").innerHTML = 'Min: ' +  meta["minValue"].toFixed(2) + ' (' + meta["minDate"] + ')';
-                    document.getElementById("max").innerHTML = 'Max: ' +  meta["maxValue"].toFixed(2) + ' (' + meta["maxDate"] + ')';
-                    document.getElementById("lastUpdate").innerHTML = 'Last update: ' +  meta["lastUpdate"];
+                    document.getElementById("dateRange").innerHTML = meta["dataFrom"] + ' - ' + meta["dataTo"];
+                    document.getElementById("currentUpdate").innerHTML = meta["currentUpdate"];
+                    document.getElementById("currentValue").innerHTML = meta["currentValue"].toFixed(2);
+                    document.getElementById("min").innerHTML = meta["minValue"].toFixed(2) + ' (' + meta["minDate"] + ')';
+                    document.getElementById("max").innerHTML = meta["maxValue"].toFixed(2) + ' (' + meta["maxDate"] + ')';
+                    document.getElementById("lastUpdate").innerHTML = meta["lastUpdate"];
                 };
         </script>
     </head>
@@ -57,31 +58,72 @@
                 <div class="col-10">
                     <!-- Main body -->
                     <div id="container" style="width:100%; height:400px;"></div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                            </tr>
-                        </thead>
+                    <b><div id="name"></div></b>
+                    <table class="table table-sm table-hover">
                         <tbody>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <th scope="row" style="width: 25%">Data history ranged between</th>
+                                <td>
+                                    <div id="dateRange"></div>
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
+                                <th scope="row">Current update</th>
+                                <td>
+                                    <div id="currentUpdate"></div>
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
+                                <th scope="row">Current value</th>
+                                <td>
+                                    <div id="currentValue"></div>
+                                </td>
                             </tr>
-                
+                            <tr>
+                                <th scope="row">Min</th>
+                                <td>
+                                    <div id="min"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Max</th>
+                                <td>
+                                    <div id="max"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Last update</th>
+                                <td>
+                                    <div id="lastUpdate"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                    </p>
+                    <!-- Social buttons -->
+                    <div class="socializer"
+                         data-features="32px,circle,opacity,icon-dark,bg-white,pad"
+                         data-sites="facebook,twitter,linkedin,discord,reddit,email,whatsapp">
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/gh/vaakash/socializer@2f749eb/js/socializer.min.js"></script>
+                    <script>
+                (function(){
+                    socializer( '.socializer' );
+                }());
+                    </script>
+                    <!-- Footer -->
+                    <p>
+                    </p>
+                    <div id="related">
+                    </div>
+                </div>
+            </div>
+            <p>
+            </p>
+            <div id="bottom">
+            </div>
+        </body>
+    </html>
+
+    

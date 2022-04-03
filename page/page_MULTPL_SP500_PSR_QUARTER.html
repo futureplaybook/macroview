@@ -36,12 +36,12 @@
         <script>
                 window.onload = function(){
                     document.getElementById("name").innerHTML = meta["displayName"];
-                    document.getElementById("dateRange").innerHTML = 'Data history ranged between: ' + meta["dataFrom"] + ' - ' + meta["dataTo"];
-                    document.getElementById("currentUpdate").innerHTML = 'Current update: ' +  meta["currentUpdate"];
-                    document.getElementById("currentValue").innerHTML = 'Current value: ' +  meta["currentValue"].toFixed(2);
-                    document.getElementById("min").innerHTML = 'Min: ' +  meta["minValue"].toFixed(2) + ' (' + meta["minDate"] + ')';
-                    document.getElementById("max").innerHTML = 'Max: ' +  meta["maxValue"].toFixed(2) + ' (' + meta["maxDate"] + ')';
-                    document.getElementById("lastUpdate").innerHTML = 'Last update: ' +  meta["lastUpdate"];
+                    document.getElementById("dateRange").innerHTML = meta["dataFrom"] + ' - ' + meta["dataTo"];
+                    document.getElementById("currentUpdate").innerHTML = meta["currentUpdate"];
+                    document.getElementById("currentValue").innerHTML = meta["currentValue"].toFixed(2);
+                    document.getElementById("min").innerHTML = meta["minValue"].toFixed(2) + ' (' + meta["minDate"] + ')';
+                    document.getElementById("max").innerHTML = meta["maxValue"].toFixed(2) + ' (' + meta["maxDate"] + ')';
+                    document.getElementById("lastUpdate").innerHTML = meta["lastUpdate"];
                 };
         </script>
     </head>
@@ -58,13 +58,47 @@
                 <div class="col-10">
                     <!-- Main body -->
                     <div id="container" style="width:100%; height:400px;"></div>
-                    <div id="name"></div>
-                    <div id="dateRange"></div>
-                    <div id="currentUpdate"></div>
-                    <div id="currentValue"></div>
-                    <div id="min"></div>
-                    <div id="max"></div>
-                    <div id="lastUpdate"></div>
+                    <b><div id="name"></div></b>
+                    <table class="table table-sm table-hover">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 25%">Data history ranged between</th>
+                                <td>
+                                    <div id="dateRange"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Current update</th>
+                                <td>
+                                    <div id="currentUpdate"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Current value</th>
+                                <td>
+                                    <div id="currentValue"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Min</th>
+                                <td>
+                                    <div id="min"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Max</th>
+                                <td>
+                                    <div id="max"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Last update</th>
+                                <td>
+                                    <div id="lastUpdate"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <p>
                     </p>
                     <!-- Social buttons -->
@@ -81,12 +115,14 @@
                     <!-- Footer -->
                     <p>
                     </p>
-                    <div id="related"></div>
+                    <div id="related">
+                    </div>
                 </div>
             </div>
             <p>
             </p>
-            <div id="bottom"></div>
+            <div id="bottom">
+            </div>
         </body>
     </html>
 
