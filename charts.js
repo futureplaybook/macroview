@@ -13,12 +13,12 @@ Highcharts.getJSON(meta['dataFilename'], function(data) {
         },
 
         subtitle: {
-            text: 'More details here'
+            text: 'Data ranged from ' + meta['dataFrom'] + ' - ' + meta['dataTo']
         },
 
         yAxis: {
             title: {
-                text: 'Exchange rate'
+                text: ''
             }
         },
 
@@ -33,7 +33,7 @@ Highcharts.getJSON(meta['dataFilename'], function(data) {
         },
 
         series: [{
-                name: meta["name"],
+                name: meta["displayName"],
                 data: data,
                 id: 'dataseries',
                 tooltip: {

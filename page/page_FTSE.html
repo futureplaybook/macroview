@@ -35,11 +35,12 @@
         </script>
         <script>
                 window.onload = function(){
-                    document.getElementById("name").innerHTML = 'Time Series: ' + meta["name"];
+                    document.getElementById("name").innerHTML = meta["displayName"];
+                    document.getElementById("dateRange").innerHTML = 'Data history ranged between: ' + meta["dataFrom"] + ' - ' + meta["dataTo"];
                     document.getElementById("currentUpdate").innerHTML = 'Current update: ' +  meta["currentUpdate"];
-                    document.getElementById("currentValue").innerHTML = 'Current value: ' +  meta["currentValue"];
-                    document.getElementById("min").innerHTML = 'Min: ' +  meta["minValue"] + ' (' + meta["minDate"] + ')';
-                    document.getElementById("max").innerHTML = 'Max: ' +  meta["maxValue"] + ' (' + meta["maxDate"] + ')';
+                    document.getElementById("currentValue").innerHTML = 'Current value: ' +  meta["currentValue"].toFixed(2);
+                    document.getElementById("min").innerHTML = 'Min: ' +  meta["minValue"].toFixed(2) + ' (' + meta["minDate"] + ')';
+                    document.getElementById("max").innerHTML = 'Max: ' +  meta["maxValue"].toFixed(2) + ' (' + meta["maxDate"] + ')';
                     document.getElementById("lastUpdate").innerHTML = 'Last update: ' +  meta["lastUpdate"];
                 };
         </script>
@@ -58,11 +59,14 @@
                     <!-- Main body -->
                     <div id="container" style="width:100%; height:400px;"></div>
                     <div id="name"></div>
+                    <div id="dateRange"></div>
                     <div id="currentUpdate"></div>
                     <div id="currentValue"></div>
                     <div id="min"></div>
                     <div id="max"></div>
                     <div id="lastUpdate"></div>
+                    <p>
+                    </p>
                     <!-- Social buttons -->
                     <div class="socializer"
                          data-features="32px,circle,opacity,icon-dark,bg-white,pad"
