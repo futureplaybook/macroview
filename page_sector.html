@@ -19,7 +19,138 @@
                 $("#bottom").load("/macroview/bottom.html");
             });
         </script>
-        <script src="/macroview/sectorCharts.js"></script>
+        <script>
+
+            var seriesOptions = [],
+                seriesCounter = 0,
+                //names = ['USA', 'EUR', 'GBR','JPN'];
+                names = ['XLB', 'XLC', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLRE', 'XLU', 'XLV', 'XLY'];
+                legendName = ['Material', 'Communication Services', 'Energy', 'Financial', 'Industrial', 'Technology', 'Consumer Staples', 'Real Estate', 'Utilities', 'Health Care', 'Consumer Discretionary'];
+            /**
+             * Create the chart when all data is loaded
+             * @returns {undefined}
+             */
+            function createChart() {
+
+                Highcharts.stockChart('container', {
+
+                    rangeSelector: {
+                        selected: 4
+                    },
+
+                    yAxis: {
+                        labels: {
+                            formatter: function () {
+                                return (this.value > 0 ? ' + ' : '') + this.value + '%';
+                            }
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 2,
+                            color: 'silver'
+                        }]
+                    },
+
+                    plotOptions: {
+                        series: {
+                            compare: 'value',
+                            compareStart: true,
+                            showInNavigator: true
+                        }
+                    },
+
+                    legend: {
+                        enabled: true
+                    },
+                    
+                    exporting: {
+                        enabled: false
+                    },
+                    scrollbar: {
+                        enabled: false
+                    },
+
+
+                    tooltip: {
+                        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                        valueDecimals: 2,
+                        split: true
+                    },
+
+                    series: seriesOptions
+                });
+            }
+
+            function success(data) {
+                //var name = this.url.match(/(USA|EUR|GBR|JPN)/)[0].toUpperCase();
+                //var name = this.url.match(/(USA|EUR|GBR|JPN)/)[0]
+                var name = this.url.match(/(XLB|XLC|XLE|XLF|XLI|XLK|XLP|XLRE|XLU|XLV|XLY)/)[0]
+                var i = names.indexOf(name);
+                seriesOptions[i] = {
+                    name: legendName[i],
+                    data: data,
+                    id:  name
+                };
+                console.log(name)
+
+                // As we're loading the data asynchronously, we don't know what order it
+                // will arrive. So we keep a counter and create the chart when all the data is loaded.
+                seriesCounter += 1;
+
+                if (seriesCounter === names.length) {
+                    createChart();
+                }
+            }
+
+            Highcharts.getJSON(
+                '/macroview/data/data_XLB.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLC.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLE.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLF.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLI.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLK.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLP.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLRE.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLU.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLV.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLY.json',
+                success
+            );
+
+
+
+        </script>
+
     </head>
     <body>
         <div id="nav"></div>
@@ -28,12 +159,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <div id="menu"></div>
+                    <div id="menu" class="sticky-top"></div>
                 </div>
                 <div class="col-10">
-                    <h1 style="display: block; font-size: 1.5em;">Sector</h1>
+                    <h1 style="display: block; font-size: 1.5em;">US Sectors</h1>
+                    <div id="container" style="width:100%; height:500px;"></div>
                     <p>
                     </p>
+                    <h2 style="display: block; font-size: 1.3em;">Cyclical</h2>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLB.html" role="button">Material</a>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLC.html" role="button">Communication Services</a>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLE.html" role="button">Energy</a>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLF.html" role="button">Financial</a>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLI.html" role="button">Industrial</a>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLK.html" role="button">Technology</a>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLY.html" role="button">Consumer Discretionary</a>
+                    <p></p>
+                    <h2 style="display: block; font-size: 1.3em;">Defensive</h2>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLP.html" role="button">Consumer Staples</a>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLRE.html" role="button">Real Estate</a>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLU.html" role="button">Utilities</a>
+                    <a class="btn btn-outline-primary" href="/macroview/page/page_XLV.html" role="button">Health Care</a>
+                    <p></p>
                     <div id="related"></div>
                 </div>
             </div>

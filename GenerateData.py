@@ -39,15 +39,17 @@ def generateMetadataFile(dict, fileName):
 # %%
 # Yahoo Data
 # https://www.ssga.com/library-content/products/fund-docs/etfs/us/information-schedules/spdr-etf-listing.pdf
-tickers_WorldIndex = {'^GSPC' : 'SP500','^DJI' : 'Dow Jones','^IXIC' : 'Nasdaq','^RUT' : 'Russell 2000','^VIX' : 'VIX','^FTSE' : 'FTSE 100','^N225' : 'Nikkei 225','^HSI' : 'Hang Seng Index'}
+tickers_WorldIndex = {'^GSPC' : 'SP500', '^DJI' : 'Dow Jones', '^IXIC' : 'Nasdaq', '^RUT' : 'Russell 2000', '^VIX' : 'VIX', '^FTSE' : 'FTSE 100', '^N225' : 'Nikkei 225', '^HSI' : 'Hang Seng Index'}
 tickers_ccy = {'DX-Y.NYB' : 'USD', 'EURUSD=X' : 'EURUSD','JPY=X' : 'USDJPY','GBPUSD=X' : 'GBPUSD', 'AUDUSD=X' : 'AUDUSD', 'NZDUSD=X' : 'NZDUSD','CNY=X' : 'CNY','CAD=X' : 'USDCAD'}
-tickers_commodities = {'GC=F' : 'Gold','SI=F' : 'Silver','CL=F' : 'Crude'}
-tickers_treasury = {'ZT=F' : 'US 2-Year Note','ZN=F' : 'US 10-Year Note','ZB=F' : 'US Treasury'}
+tickers_commodities = {'GC=F' : 'Gold', 'SI=F' : 'Silver', 'CL=F' : 'Crude oil', 'ALI=F' : 'Aluminum', 'HG=F' : 'Copper', 'NG=F' : 'Natural Gas'}
+tickers_treasury = {'ZT=F' : 'US 2-Year Note', 'ZN=F' : 'US 10-Year Note', 'ZB=F' : 'US Treasury'}
 
-tickers_sector = {'XLC' : 'Communication Service','XLP' : 'Consumer Staples','XLY' : 'Consumer Discretionary','XLE' : 'Energy','XLF' : 'Financial','XLV' : 'Health Care','XLI' : 'Industrial','XLB' : 'Materials','XLRE' : 'Real Estate','XLK' : 'Technology','XLU' : 'Utilities'}
+tickers_sector = {'XLC' : 'Communication Service (XLC)', 'XLP' : 'Consumer Staples (XLP)', 'XLY' : 'Consumer Discretionary (XLY)', 'XLE' : 'Energy (XLE)', 'XLF' : 'Financial (XLF)', 'XLV' : 'Health Care (XLV)', 'XLI' : 'Industrial (XLI)', 'XLB' : 'Materials (XLB)', 'XLRE' : 'Real Estate (XLRE)', 'XLK' : 'Technology (XLK)', 'XLU' : 'Utilities (XLU)'}
 tickers_style = {'SPTM' : 'SP 1500','SPLG' : 'Large Cap','SPMD' : 'Mid Cap','SPSM'  : 'Small Cap','SPYG'  : 'Growth','SPYV' : 'Value','SPYD' : 'High Dividend Yield'}
 
-tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **tickers_treasury, **tickers_sector, **tickers_style}
+tickers_arg = {'LE=F' : 'Live Cattle', 'KC=F' : 'Coffee', 'ZC=F' : 'Corn', 'CT=F' : 'Cotton', 'ZS=F': 'Soybean', 'SB=F' : 'Sugar', 'ZW=F' : 'Wheat'}
+
+tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **tickers_treasury, **tickers_sector, **tickers_style, **tickers_arg}
 
 
 asOfDateTime = datetime.now()
@@ -73,6 +75,7 @@ for t in tickers_yahoo:
         'maxDate' : (indexedData.iloc[indexedData['Value'].idxmax(),:]['Date']).strftime('%d-%m-%Y'),
         'maxValue' : indexedData.max()['Value'],
         'lastUpdate' : asOfDateTimeStr,
+        'source' : 'Yahoo Finance',
         'dataFilename' : '/macroview/data/data_' + name + '.json'
         }
     
@@ -108,6 +111,7 @@ for t in tickers_allNasdaq:
         'maxDate' : (indexedData.iloc[indexedData['Value'].idxmax(),:]['Date']).strftime('%d-%m-%Y'),
         'maxValue' : indexedData.max()['Value'],
         'lastUpdate' : asOfDateTimeStr,
+        'source' : 'Nasdaq',
         'dataFilename' : '/macroview/data/data_' + t.replace('/','_') + '.json'
         }
     
@@ -137,6 +141,7 @@ def generateFredMeta(indexedData, name = '', displayName = ''):
             'maxDate' : (indexedData.iloc[indexedData['Value'].idxmax(),:]['Date']).strftime('%d-%m-%Y'),
             'maxValue' : indexedData.max()['Value'],
             'lastUpdate' : asOfDateTimeStr,
+            'source' : 'Fred',
             'dataFilename' : '/macroview/data/data_' + name + '.json'
             }
     return meta

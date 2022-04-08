@@ -20,6 +20,116 @@
             });
         </script>
         <script src="/macroview/worldIndexCharts.js"></script>
+
+        <!-- US Market -->
+        <script>
+
+            var seriesOptions = [],
+                seriesCounter = 0,
+                //names = ['USA', 'EUR', 'GBR','JPN'];
+                names = ['GSPC', 'DJI', 'IXIC', 'RUT'];
+                legendName = ['S&P 500', 'Dow Jones', 'Nasdaq', 'Russell 2000'];
+            /**
+             * Create the chart when all data is loaded
+             * @returns {undefined}
+             */
+            function createChart() {
+
+                Highcharts.stockChart('container', {
+
+                    rangeSelector: {
+                        selected: 4
+                    },
+
+                    yAxis: {
+                        labels: {
+                            format: '{value} %'
+                        },
+
+                        plotLines: [{
+                            value: 0,
+                            width: 2,
+                            color: 'silver'
+                        }]
+                    },
+
+                    plotOptions: {
+                        series: {
+                            compare: 'percent',
+                            compareStart: true,
+                            showInNavigator: true
+                        }
+                    },
+
+                    legend: {
+                        enabled: true
+                    },
+                    
+                    exporting: {
+                        enabled: false
+                    },
+                    scrollbar: {
+                        enabled: false
+                    },
+
+
+                    tooltip: {
+                        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                        valueDecimals: 2,
+                        split: true
+                    },
+
+                    series: seriesOptions
+                });
+            }
+
+            function success(data) {
+                //var name = this.url.match(/(USA|EUR|GBR|JPN)/)[0].toUpperCase();
+                //var name = this.url.match(/(USA|EUR|GBR|JPN)/)[0]
+                var name = this.url.match(/(GSPC|DJI|IXIC|RUT)/)[0]
+                var i = names.indexOf(name);
+                seriesOptions[i] = {
+                    name: legendName[i],
+                    data: data,
+                    id:  name
+                };
+                console.log(name)
+
+                // As we're loading the data asynchronously, we don't know what order it
+                // will arrive. So we keep a counter and create the chart when all the data is loaded.
+                seriesCounter += 1;
+
+                if (seriesCounter === names.length) {
+                    createChart();
+                }
+            }
+
+            Highcharts.getJSON(
+                '/macroview/data/data_GSPC.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_DJI.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_IXIC.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_RUT.json',
+                success
+            );
+
+
+
+        </script>
+
+
+
+
+
+
     </head>
     <body>
         <div id="nav"></div>
@@ -28,10 +138,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <div id="menu"></div>
+                    <div id="menu" class="sticky-top"></div>
                 </div>
                 <div class="col-10">
                     <h1 style="display: block; font-size: 1.5em;">World Index</h1>
+                    <h2 style="display: block; font-size: 1.3em;">US Market</h2>
+                    <div id = "container"></div>
+                    <p></p>
                     <div class="row row-cols-1 row-cols-md-2 g-4">
                         <div class="col">
                             <div class="card h-100">
@@ -61,6 +174,33 @@
                                 <div class="card-footer">
                                     <small class="text-muted">Last updated 3 mins ago</small>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
+                    <hr>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <div class="col">
+                            <h2 style="display: block; font-size: 1.3em;">US</h2>
+                            <div class="d-grid gap-2">
+                                <a class="btn btn-outline-primary btn-lg" href="/macroview/page/page_GSPC.html" role="button">S&P 500</a>
+                                <a class="btn btn-outline-primary btn-lg" href="/macroview/page/page_DJI.html" role="button">Dow Jones</a>
+                                <a class="btn btn-outline-primary btn-lg" href="/macroview/page/page_IXIC.html" role="button">Nasdaq</a>
+                                <a class="btn btn-outline-primary btn-lg" href="/macroview/page/page_RUT.html" role="button">Russell 2000</a>
+                                <a class="btn btn-outline-primary btn-lg" href="/macroview/page/page_VIX.html" role="button">VIX</a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h2 style="display: block; font-size: 1.3em;">Europe</h2>
+                            <div class="d-grid gap-2">
+                                <a class="btn btn-outline-primary btn-lg" href="/macroview/page/page_FTSE.html" role="button">FTSE 100</a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h2 style="display: block; font-size: 1.3em;">Asia</h2>
+                            <div class="d-grid gap-2">
+                                <a class="btn btn-outline-primary btn-lg" href="/macroview/page/page_N225.html" role="button">Nikkei 225</a>
+                                <a class="btn btn-outline-primary btn-lg" href="/macroview/page/page_HSI.html" role="button">Hang Seng Index</a>
                             </div>
                         </div>
                     </div>
