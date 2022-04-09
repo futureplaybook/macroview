@@ -14,6 +14,7 @@
         <script>
             $(document).ready(function() {
                 $("#nav").load("/macroview/nav.html");
+                $("#related").load("/macroview/relatedInstruments.html");
                 $("#bottom").load("/macroview/bottom.html");
             });
 
@@ -24,7 +25,10 @@
     </head>
     <body>
         <div id="nav"></div>
-        <div id="content"></div>
+        <div class="container">
+            <div id="content"></div>
+            <div id="related"></div>
+        </div>
         <div id="bottom"></div>
     </body>
 </html>

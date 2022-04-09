@@ -1,69 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content=
-        "width=device-width, initial-scale=1.0">
-  
-    <script src=
-"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
-  
-    <!-- Some CSS -->
-    <style>
-        div {
-            border: 2px solid green;
-            width: fit-content;
-            margin: 20px auto;
-            padding: 2px 20px;
-            cursor: pointer;
-        }
-  
-        p {
-            font-size: 14px;
-        }
-    </style>
-</head>
-  
-<body>
-  
-    <!-- First div -->
-    <div id="div-1">
-        First Div
-        <p>Click to load first html</p>
-    </div>
-  
-    <!-- Second div -->
-    <div id="div-2">
-        Second div
-        <p>Click to load first html</p>
-    </div>
-  
-    <!-- Script -->
+    <head>
+        <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
     <script>
-  
-        // Check if file is completely ready
-        $(document).ready(function () {
-  
-            // Adding click event on id div-1
-            // if it clicked then anonymous
-            // function will be called
-            $('#div-1').click(function () {
-  
-                // Load the exertnal html
-                // here this refers to 
-                // current selector
-                $(this).load('page2.html');
-            });
-  
-            // Same as above
-            $('#div-2').click(function () {
-                $(this).load('DemoHTML.html');
-            });
+        Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            data: {
+                // enablePolling: true,
+                csvURL: '/macroview/d.csv'
+            },
+            title: {
+                text: 'Fruit Consumption'
+            },
+            yAxis: {
+                title: {
+                    text: 'Units'
+                }
+            }
         });
+
     </script>
-</body>
-  
+    <body>
+        <div id="container"
+             style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    </body>
 </html>

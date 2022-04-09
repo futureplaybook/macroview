@@ -11,234 +11,162 @@
         <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
         <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
         <script src="/macroview/indexCharts.js"></script>
+        <script>
+            var seriesOptions = [],
+                seriesCounter = 0,
+                //names = ['USA', 'EUR', 'GBR','JPN'];
+                names = ['coreCPIYOY', 'headlineCPIYOY'];
+                legendName = ['Core CPI YoY', 'Headline CPI YoY']; 
+            /**
+             * Create the chart when all data is loaded
+             * @returns {undefined}
+             */
+
+            function createChart() {
+
+                Highcharts.stockChart('containerInflation', {
+
+                    title: {
+                        text: 'US Inflation'
+                    },
+
+                    subtitle: {
+                        text: 'Headline and Core CPI'
+                    },
+
+                    yAxis: {
+                        labels: {
+                            formatter: function () {
+                                return (this.value > 0 ? ' + ' : '') + this.value + '%';
+                            }
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 2,
+                            color: 'silver'
+                        }]
+                    },
+
+                    plotOptions: {
+                        series: {
+                            compare: 'value',
+                            compareStart: true,
+                            showInNavigator: true
+                        }
+                    },
+
+                    legend: {
+                        enabled: true
+                    },
+                    
+                    exporting: {
+                        enabled: false
+                    },
+                    scrollbar: {
+                        enabled: false
+                    },
+                    navigator: {
+                        enabled: false
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+
+                    rangeSelector: {
+                        enabled: false
+                    },
+
+
+                    tooltip: {
+                        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br />',
+                        valueDecimals: 2,
+                        split: true
+                    },
+
+                    series: seriesOptions
+                });
+            }
+
+            function success(data) {
+                //var name = this.url.match(/(USA|EUR|GBR|JPN)/)[0].toUpperCase();
+                //var name = this.url.match(/(USA|EUR|GBR|JPN)/)[0]
+                var name = this.url.match(/(coreCPIYOY|headlineCPIYOY)/)[0]
+                var i = names.indexOf(name);
+                seriesOptions[i] = {
+                    name: legendName[i],
+                    data: data,
+                    id:  name
+                };
+                console.log(name)
+
+                // As we're loading the data asynchronously, we don't know what order it
+                // will arrive. So we keep a counter and create the chart when all the data is loaded.
+                seriesCounter += 1;
+
+                if (seriesCounter === names.length) {
+                    createChart();
+                }
+            }
+
+            Highcharts.getJSON(
+                '/macroview/data/data_coreCPIYOY.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_headlineCPIYOY.json',
+                success
+            );
+            
+
+
+
+        </script>
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h1 class="display-6">Daily Market Update</h1>
-                    <div id="containerHSI"></div>
-                </div>
+        <p>
+        </p>
+        <div>
+            <h4>US Market</h4>
+            <a href="/macroview/page_worldIndex.html">more...</a>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div id="containerSPX"></div>
             </div>
-            <div class="row">
-                <div class="col-4">
-                    <div id="containerJPY"></div>
-                </div>
-                <div class="col-4">
-                    <div id="containerShillerPE"></div>
-                </div>
-                <div class="col-4">
-                    <div id="containerCoreCPI"></div>
-                </div>
+            <div class="col-4">
+                <div id="containerIXIC"></div>
+            </div>
+            <div class="col-4">
+                <div id="containerVIX"></div>
             </div>
         </div>
         <p>
         </p>
-        <div class="container">
-            <div class="row">
-                <div class="col-2">
-                    <div class="list-group">
-                        <a href="#"
-                           class="list-group-item list-group-item-action active"
-                           aria-current="true">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">Macroeconomic</h5>
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">
-                                Some placeholder content in a paragraph.
-                            </p>
-                            <small class="text-muted">And some muted small print.</small>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">
-                                Some placeholder content in a paragraph.
-                            </p>
-                            <small class="text-muted">And some muted small print.</small>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-2">2</div>
-                <div class="col-2">3</div>
-                <div class="col-2">4</div>
-                <div class="col-2">5</div>
-                <div class="col-2">6</div>
+        <div>
+            <h4>US Sectors ETF</h4>
+            <a href="/macroview/page_sector.html">more...</a>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="containerSector"></div>
+            </div>
+        </div>
+        <p>
+        </p>
+        <h4>Inflation</h4>
+        <a href="/macroview/page_inflation.html">more...</a>
+        <div class="row">
+            <div class="col-4">
+                <div id="containerInflation"></div>
+            </div>
+            <div class="col-4">
+                <div id="containerDGS10"></div>
+            </div>
+            <div class="col-4">
+                <div id="containerDFII10"></div>
             </div>
         </div>
     </div>
-    <div>
-        <h5>Daily Markets Overview</h5>
-        <ul>
-            <li>
-                <a href="#!">
-                    SPX
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    Sector Index
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    SPX PE
-                </a>
-            </li>
-            <li>
-                <a href="/macroview/page/page_MULTPL_SHILLER_PE_RATIO_MONTH.html">
-                    Shiller PE Ratio
-                </a>
-            </li>
-            <li>
-                <a href="page/page_VIX.html">
-                    VIX
-                </a>
-            </li>
-            <li>
-                <a href="page_dvdYield.html">
-                    SP500 Dividend Yield
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    10y yield and TIPS
-                </a>
-            </li>
-            <li>
-                <a href="page/page_coreCPIYOY.html">
-                    Inflation
-                </a>
-            </li>
-            <li>
-                <a href="page_realYield.html">
-                    Real Yield
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    Yield Curve
-                </a>
-            </li>
-            <li>
-                <a href="page_T10Y2Y.html">
-                    10y2y Yield Spread
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    High yield spread
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    Dollar Index
-                </a>
-            </li>
-            <li>
-                <a href="page_cl1.html">
-                    Crude
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    Style - Growth vs. Value Spread
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    Fed and ECB official rate
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    10y Yield for US/Germany/Japan
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <h5>
-            Sector
-        </h5>
-        <ul>
-            <li>
-                <a href="#!">
-                    Sector ETFs
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    Sector PE
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <h5>
-            Mean Reversion
-        </h5>
-        <ul>
-            <li>
-                <a href="#!">
-                    Industrial Group
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    Sector
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <h5>
-            Thematic
-        </h5>
-        <ul>
-            <li>
-                <a href="#!">
-                    Index
-                </a>
-            </li>
-            <li>
-                <a href="#!">
-                    Table of Relative Performance
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <h5>
-            World
-        </h5>
-        <li>
-            <a href="page_EconCalendar.html">
-                Economic Calendar
-            </a>
-        </li>
-        <li>
-            <a href="page_worldGDP.html">
-                World GDP Growth
-            </a>
-        </li>
-    </div>
-    <a href="DemoHTML.html">
-        external link
-    </a>
-    <script>
-        $('#demo').carousel({
-            interval: 2000,
-            cycle: true
-        });
-    </script>
 </body>
 </html>
