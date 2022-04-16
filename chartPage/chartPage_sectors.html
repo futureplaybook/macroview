@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Page 2</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+        <script src="https://kit.fontawesome.com/f60ac3ab2a.js" crossorigin="anonymous"></script>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+        <script>
+            var seriesOptions = [],
+                seriesCounter = 0,
+                //names = ['USA', 'EUR', 'GBR','JPN'];
+                names = ['XLB', 'XLC', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLRE', 'XLU', 'XLV', 'XLY'];
+                legendName = ['Material', 'Communication Services', 'Energy', 'Financial', 'Industrial', 'Technology', 'Consumer Staples', 'Real Estate', 'Utilities', 'Health Care', 'Consumer Discretionary'];
+            /**
+             * Create the chart when all data is loaded
+             * @returns {undefined}
+             */
+            function createChart() {
+
+                Highcharts.stockChart('container', {
+
+                    rangeSelector: {
+                        selected: 4
+                    },
+
+                    yAxis: {
+                        labels: {
+                            formatter: function () {
+                                return (this.value > 0 ? ' + ' : '') + this.value + '%';
+                            }
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 2,
+                            color: 'silver'
+                        }]
+                    },
+
+                    plotOptions: {
+                        series: {
+                            compare: 'value',
+                            compareStart: true,
+                            showInNavigator: true
+                        }
+                    },
+
+                    legend: {
+                        enabled: true
+                    },
+                    
+                    exporting: {
+                        enabled: false
+                    },
+                    scrollbar: {
+                        enabled: false
+                    },
+
+
+                    tooltip: {
+                        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br />',
+                        valueDecimals: 2,
+                        split: true
+                    },
+
+                    series: seriesOptions
+                });
+            }
+
+            function success(data) {
+                //var name = this.url.match(/(USA|EUR|GBR|JPN)/)[0].toUpperCase();
+                //var name = this.url.match(/(USA|EUR|GBR|JPN)/)[0]
+                var name = this.url.match(/(XLB|XLC|XLE|XLF|XLI|XLK|XLP|XLRE|XLU|XLV|XLY)/)[0]
+                var i = names.indexOf(name);
+                seriesOptions[i] = {
+                    name: legendName[i],
+                    data: data,
+                    id:  name
+                };
+                console.log(name)
+
+                // As we're loading the data asynchronously, we don't know what order it
+                // will arrive. So we keep a counter and create the chart when all the data is loaded.
+                seriesCounter += 1;
+
+                if (seriesCounter === names.length) {
+                    createChart();
+                }
+            }
+
+            Highcharts.getJSON(
+                '/macroview/data/data_XLB.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLC.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLE.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLF.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLI.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLK.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLP.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLRE.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLU.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLV.json',
+                success
+            );
+            Highcharts.getJSON(
+                '/macroview/data/data_XLY.json',
+                success
+            );
+
+
+
+        </script>
+    </head>
+    <body>
+        <div id="container"></div>
+    </body>
+</html>

@@ -5,6 +5,7 @@ import quandl
 import yfinance as yf
 import pandas as pd
 from fredapi import Fred
+import time
 
 
 # %%
@@ -39,7 +40,21 @@ def generateMetadataFile(dict, fileName):
 # %%
 # Yahoo Data
 # https://www.ssga.com/library-content/products/fund-docs/etfs/us/information-schedules/spdr-etf-listing.pdf
-tickers_WorldIndex = {'^GSPC' : 'SP500', '^DJI' : 'Dow Jones', '^IXIC' : 'Nasdaq', '^RUT' : 'Russell 2000', '^VIX' : 'VIX', '^FTSE' : 'FTSE 100', '^N225' : 'Nikkei 225', '^HSI' : 'Hang Seng Index'}
+tickers_WorldIndex = {'^GSPC' : 'SP500', 
+                        '^DJI' : 'Dow Jones', 
+                        '^IXIC' : 'Nasdaq', 
+                        '^RUT' : 'Russell 2000', 
+                        '^VIX' : 'VIX', 
+                        '^FTSE' : 'FTSE 100',
+                        '^STOXX' : 'STOXX 600', 
+                        '^FCHI' : 'CAC 40', 
+                        '^GDAXI' : 'DAX', 
+                        '^IBEX' : 'IBEX 35', 
+                        '^N225' : 'Nikkei 225', 
+                        '000001.SS' : 'Shanghai Stock Exchange Composite Index',
+                        '^KS11' : 'KOSPI Composite Index',
+                        '^HSI' : 'Hang Seng Index'}
+
 tickers_ccy = {'DX-Y.NYB' : 'USD', 'EURUSD=X' : 'EURUSD','JPY=X' : 'USDJPY','GBPUSD=X' : 'GBPUSD', 'AUDUSD=X' : 'AUDUSD', 'NZDUSD=X' : 'NZDUSD','CNY=X' : 'CNY','CAD=X' : 'USDCAD'}
 tickers_commodities = {'GC=F' : 'Gold', 'SI=F' : 'Silver', 'CL=F' : 'Crude oil', 'ALI=F' : 'Aluminum', 'HG=F' : 'Copper', 'NG=F' : 'Natural Gas'}
 tickers_treasury = {'ZT=F' : 'US 2-Year Note', 'ZN=F' : 'US 10-Year Note', 'ZB=F' : 'US Treasury'}
@@ -55,7 +70,10 @@ tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **t
 asOfDateTime = datetime.now()
 asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
 
+i = 0
 for t in tickers_yahoo:
+    if (i != 0 and i%10 == 0):
+        time.sleep(5) 
     name = t.replace('^','').replace('=F','').replace('=X','').replace('DX-Y.NYB','DXY')
     rawData = yf.download(t)
     #indexedData = rawData['Adj Close'].tail(950).reset_index()
@@ -80,6 +98,7 @@ for t in tickers_yahoo:
         }
     
     generateMetadataFile(meta, name)
+    i = i + 1
     
 print('Successfully download Yahoo data')
 
@@ -222,5 +241,55 @@ meta = generateFredMeta(df_reset, series, 'US 10-Year Breakeven Inflation Rate')
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
+
+# %%
+series = 'A191RL1Q225SBEA' 
+df = fred.get_series(series)
+df = df.dropna()
+df_reset = df.reset_index()
+df_reset = df_reset.dropna()
+df_reset.columns = ['Date','Value']
+highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
+meta = generateFredMeta(df_reset, series, 'US Real GDP (Percent Change from Preceding Period, SAAR)')
+generateMetadataFile(meta, series)
+generateJSONDataFile(series, highChartTS)
+
+
+
+# %%
+series = 'UNRATE' 
+df = fred.get_series(series)
+df = df.dropna()
+df_reset = df.reset_index()
+df_reset = df_reset.dropna()
+df_reset.columns = ['Date','Value']
+highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
+meta = generateFredMeta(df_reset, series, 'US Unemployment Rate')
+generateMetadataFile(meta, series)
+generateJSONDataFile(series, highChartTS)
+
+
+# %%
+series = 'PAYEMS' 
+df = fred.get_series(series)
+df = df.dropna()
+df_reset = df.reset_index()
+df_reset = df_reset.dropna()
+df_reset.columns = ['Date','Value']
+highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
+meta = generateFredMeta(df_reset, series, 'US Total Nonfarm')
+generateMetadataFile(meta, series)
+generateJSONDataFile(series, highChartTS)
+
 print('Successfully download Fred data')
 
+# %%
+durableGoods = fred.get_series('UMDMNO')
+durableGoodsYOY = durableGoods.pct_change(periods=12)*100
+durableGoodsYOY = durableGoodsYOY.dropna()
+durableGoodsYOY_reset = durableGoodsYOY.reset_index()
+durableGoodsYOY_reset.columns = ['Date','Value']
+highChartTS = GenerateHighchartVar(durableGoodsYOY_reset, 'Date','Value')
+meta = generateFredMeta(durableGoodsYOY_reset, 'UMDMNO', 'US Durable Goods New Orders YoY')
+generateMetadataFile(meta, 'durableGoodsYOY')
+generateJSONDataFile('durableGoodsYOY', highChartTS)
