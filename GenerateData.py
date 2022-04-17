@@ -250,7 +250,7 @@ df_reset = df.reset_index()
 df_reset = df_reset.dropna()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, series, 'US Real GDP (Percent Change from Preceding Period, SAAR)')
+meta = generateFredMeta(df_reset, series, 'US Real GDP Growth (Percent Change from Preceding Period, SAAR)')
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
