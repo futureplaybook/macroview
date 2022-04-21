@@ -6,8 +6,6 @@ import yfinance as yf
 import pandas as pd
 from fredapi import Fred
 import time
-import functools
-import requests
 
 
 # %%
@@ -40,16 +38,51 @@ def generateMetadataFile(dict, fileName):
 
 
 # %%
-session = requests.Session()
-# accept gzip compressed data for less bandwidth
-session.headers.update({
-    'Accept-Encoding': 'gzip, deflate',
-})
-session.request = functools.partial(session.request, timeout=30)
-yf.ticker._requests = session
-
 # Yahoo Data
 # https://www.ssga.com/library-content/products/fund-docs/etfs/us/information-schedules/spdr-etf-listing.pdf
+
+def getYahooData(tickerDict):
+    asOfDateTime = datetime.now()
+    asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
+
+    tickerList = list(tickerDict.keys())
+    d = yf.download(tickerList)
+    rawData = d['Adj Close'].reset_index()
+    print('Successfully download Yahoo data')
+
+    for t in tickerList:
+        name = t.replace('^','').replace('=F','').replace('=X','').replace('DX-Y.NYB','DXY')
+        #rawData = yf.download(t)
+        #indexedData = rawData['Adj Close'].tail(950).reset_index()
+        indexedData = rawData[['Date',t]]
+        #indexedData = rawData['Adj Close'].reset_index()
+        indexedData.columns = ['Date','Value']
+        indexedData.dropna()
+        highChartTS = GenerateHighchartVar(indexedData, 'Date','Value')
+        generateJSONDataFile(name, highChartTS)
+        
+        meta = {'name': name,
+                'displayName': tickerDict[t],
+                'dataFrom': (indexedData.head(1)['Date'].item()).strftime('%m/%Y'),
+                'dataTo': (indexedData.tail(1)['Date'].item()).strftime('%m/%Y'),
+            'currentUpdate': (indexedData.tail(1)['Date'].item()).strftime('%d-%m-%Y'),
+            'currentValue' : indexedData.tail(1)['Value'].item(),
+            'minDate' : (indexedData.iloc[indexedData['Value'].idxmin(),:]['Date']).strftime('%d-%m-%Y'),
+            'minValue' : indexedData.min()['Value'],
+            'maxDate' : (indexedData.iloc[indexedData['Value'].idxmax(),:]['Date']).strftime('%d-%m-%Y'),
+            'maxValue' : indexedData.max()['Value'],
+            'lastUpdate' : asOfDateTimeStr,
+            'source' : 'Internet',
+            'dataFilename' : '/macroview/data/data_' + name + '.json'
+            }
+        
+        generateMetadataFile(meta, name)
+    print('Successfully generate Yahoo data')
+    
+
+
+
+
 tickers_WorldIndex = {'^GSPC' : 'SP500', 
                         '^DJI' : 'Dow Jones', 
                         '^IXIC' : 'Nasdaq', 
@@ -71,51 +104,19 @@ tickers_treasury = {'ZT=F' : 'US 2-Year Note', 'ZN=F' : 'US 10-Year Note', 'ZB=F
 
 tickers_sector = {'XLC' : 'Communication Service (XLC)', 'XLP' : 'Consumer Staples (XLP)', 'XLY' : 'Consumer Discretionary (XLY)', 'XLE' : 'Energy (XLE)', 'XLF' : 'Financial (XLF)', 'XLV' : 'Health Care (XLV)', 'XLI' : 'Industrial (XLI)', 'XLB' : 'Materials (XLB)', 'XLRE' : 'Real Estate (XLRE)', 'XLK' : 'Technology (XLK)', 'XLU' : 'Utilities (XLU)'}
 tickers_style = {'SPTM' : 'SP 1500','SPLG' : 'Large Cap','SPMD' : 'Mid Cap','SPSM'  : 'Small Cap','SPYG'  : 'Growth','SPYV' : 'Value','SPYD' : 'High Dividend Yield'}
+#tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **tickers_treasury, **tickers_sector, **tickers_style} # Batch 1
 
-#tickers_arg = {'LE=F' : 'Live Cattle', 'KC=F' : 'Coffee', 'ZC=F' : 'Corn', 'CT=F' : 'Cotton', 'ZS=F': 'Soybean', 'SB=F' : 'Sugar', 'ZW=F' : 'Wheat'}
+tickers_arg = {'LE=F' : 'Live Cattle', 'KC=F' : 'Coffee', 'ZC=F' : 'Corn', 'CT=F' : 'Cotton', 'ZS=F': 'Soybean', 'SB=F' : 'Sugar', 'ZW=F' : 'Wheat'} # Batch 2
 
-#tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **tickers_treasury, **tickers_sector, **tickers_style, **tickers_arg}
-tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **tickers_treasury, **tickers_sector, **tickers_style}
+getYahooData(tickers_ccy)
+getYahooData(tickers_commodities)
+getYahooData(tickers_treasury)
+getYahooData(tickers_sector)
+getYahooData(tickers_style)
+getYahooData(tickers_arg)
 
 
-asOfDateTime = datetime.now()
-asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
 
-tickerList = list(tickers_yahoo.keys())
-d = yf.download(tickerList)
-rawData = d['Adj Close'].reset_index()
-print('Successfully download Yahoo data')
-
-for t in tickers_yahoo:
-    name = t.replace('^','').replace('=F','').replace('=X','').replace('DX-Y.NYB','DXY')
-    #rawData = yf.download(t)
-    #indexedData = rawData['Adj Close'].tail(950).reset_index()
-    indexedData = rawData[['Date',t]]
-    #indexedData = rawData['Adj Close'].reset_index()
-    indexedData.columns = ['Date','Value']
-    indexedData.dropna()
-    highChartTS = GenerateHighchartVar(indexedData, 'Date','Value')
-    generateJSONDataFile(name, highChartTS)
-    
-    meta = {'name': name,
-            'displayName': tickers_yahoo[t],
-            'dataFrom': (indexedData.head(1)['Date'].item()).strftime('%m/%Y'),
-            'dataTo': (indexedData.tail(1)['Date'].item()).strftime('%m/%Y'),
-        'currentUpdate': (indexedData.tail(1)['Date'].item()).strftime('%d-%m-%Y'),
-        'currentValue' : indexedData.tail(1)['Value'].item(),
-        'minDate' : (indexedData.iloc[indexedData['Value'].idxmin(),:]['Date']).strftime('%d-%m-%Y'),
-        'minValue' : indexedData.min()['Value'],
-        'maxDate' : (indexedData.iloc[indexedData['Value'].idxmax(),:]['Date']).strftime('%d-%m-%Y'),
-        'maxValue' : indexedData.max()['Value'],
-        'lastUpdate' : asOfDateTimeStr,
-        'source' : 'Yahoo Finance',
-        'dataFilename' : '/macroview/data/data_' + name + '.json'
-        }
-    
-    generateMetadataFile(meta, name)
-
-    
-print('Successfully generate Yahoo data')
 
 # %%
 # Nasdaq Data
@@ -308,3 +309,4 @@ highChartTS = GenerateHighchartVar(durableGoodsYOY_reset, 'Date','Value')
 meta = generateFredMeta(durableGoodsYOY_reset, 'UMDMNO', 'US Durable Goods New Orders YoY')
 generateMetadataFile(meta, 'durableGoodsYOY')
 generateJSONDataFile('durableGoodsYOY', highChartTS)
+
