@@ -70,15 +70,18 @@ tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **t
 asOfDateTime = datetime.now()
 asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
 
-i = 0
+tickerList = list(tickers_yahoo.keys())
+d = yf.download(tickerList)
+rawData = d['Adj Close'].reset_index()
+
 for t in tickers_yahoo:
-    if (i != 0 and i%10 == 0):
-        time.sleep(5) 
     name = t.replace('^','').replace('=F','').replace('=X','').replace('DX-Y.NYB','DXY')
-    rawData = yf.download(t)
+    #rawData = yf.download(t)
     #indexedData = rawData['Adj Close'].tail(950).reset_index()
-    indexedData = rawData['Adj Close'].reset_index()
+    indexedData = rawData[['Date',t]]
+    #indexedData = rawData['Adj Close'].reset_index()
     indexedData.columns = ['Date','Value']
+    indexedData.dropna()
     highChartTS = GenerateHighchartVar(indexedData, 'Date','Value')
     generateJSONDataFile(name, highChartTS)
     
@@ -98,7 +101,7 @@ for t in tickers_yahoo:
         }
     
     generateMetadataFile(meta, name)
-    i = i + 1
+
     
 print('Successfully download Yahoo data')
 
