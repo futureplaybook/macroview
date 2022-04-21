@@ -6,6 +6,8 @@ import yfinance as yf
 import pandas as pd
 from fredapi import Fred
 import time
+import functools
+import requests
 
 
 # %%
@@ -38,6 +40,14 @@ def generateMetadataFile(dict, fileName):
 
 
 # %%
+session = requests.Session()
+# accept gzip compressed data for less bandwidth
+session.headers.update({
+    'Accept-Encoding': 'gzip, deflate',
+})
+session.request = functools.partial(session.request, timeout=30)
+yf.ticker._requests = session
+
 # Yahoo Data
 # https://www.ssga.com/library-content/products/fund-docs/etfs/us/information-schedules/spdr-etf-listing.pdf
 tickers_WorldIndex = {'^GSPC' : 'SP500', 
@@ -62,9 +72,10 @@ tickers_treasury = {'ZT=F' : 'US 2-Year Note', 'ZN=F' : 'US 10-Year Note', 'ZB=F
 tickers_sector = {'XLC' : 'Communication Service (XLC)', 'XLP' : 'Consumer Staples (XLP)', 'XLY' : 'Consumer Discretionary (XLY)', 'XLE' : 'Energy (XLE)', 'XLF' : 'Financial (XLF)', 'XLV' : 'Health Care (XLV)', 'XLI' : 'Industrial (XLI)', 'XLB' : 'Materials (XLB)', 'XLRE' : 'Real Estate (XLRE)', 'XLK' : 'Technology (XLK)', 'XLU' : 'Utilities (XLU)'}
 tickers_style = {'SPTM' : 'SP 1500','SPLG' : 'Large Cap','SPMD' : 'Mid Cap','SPSM'  : 'Small Cap','SPYG'  : 'Growth','SPYV' : 'Value','SPYD' : 'High Dividend Yield'}
 
-tickers_arg = {'LE=F' : 'Live Cattle', 'KC=F' : 'Coffee', 'ZC=F' : 'Corn', 'CT=F' : 'Cotton', 'ZS=F': 'Soybean', 'SB=F' : 'Sugar', 'ZW=F' : 'Wheat'}
+#tickers_arg = {'LE=F' : 'Live Cattle', 'KC=F' : 'Coffee', 'ZC=F' : 'Corn', 'CT=F' : 'Cotton', 'ZS=F': 'Soybean', 'SB=F' : 'Sugar', 'ZW=F' : 'Wheat'}
 
-tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **tickers_treasury, **tickers_sector, **tickers_style, **tickers_arg}
+#tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **tickers_treasury, **tickers_sector, **tickers_style, **tickers_arg}
+tickers_yahoo = {**tickers_WorldIndex, **tickers_ccy, **tickers_commodities, **tickers_treasury, **tickers_sector, **tickers_style}
 
 
 asOfDateTime = datetime.now()
@@ -73,6 +84,7 @@ asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
 tickerList = list(tickers_yahoo.keys())
 d = yf.download(tickerList)
 rawData = d['Adj Close'].reset_index()
+print('Successfully download Yahoo data')
 
 for t in tickers_yahoo:
     name = t.replace('^','').replace('=F','').replace('=X','').replace('DX-Y.NYB','DXY')
@@ -103,7 +115,7 @@ for t in tickers_yahoo:
     generateMetadataFile(meta, name)
 
     
-print('Successfully download Yahoo data')
+print('Successfully generate Yahoo data')
 
 # %%
 # Nasdaq Data
