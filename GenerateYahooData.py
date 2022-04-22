@@ -42,7 +42,7 @@ def generateMetadataFile(dict, fileName):
 
 # Yahoo Data
 # https://www.ssga.com/library-content/products/fund-docs/etfs/us/information-schedules/spdr-etf-listing.pdf
-@concurrent.process(timeout=30)
+@concurrent.process(timeout=60)
 def getYahooData(tickerDict):
     asOfDateTime = datetime.now()
     asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
@@ -138,7 +138,7 @@ def function_7():
 
 if __name__ == "__main__":
     try:
-        function_1()
+        #function_1()
         function_2()
         function_3()
         function_4()
