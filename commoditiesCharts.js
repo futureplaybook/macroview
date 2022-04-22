@@ -50,34 +50,13 @@ Highcharts.getJSON(dataPathGold, function(data) {
         },
 
         series: [{
-                name: 'Gold',
-                data: data,
-                id: 'dataseries',
-                tooltip: {
-                    valueDecimals: 2
-                }
-            },
-            {
-                type: 'flags',
-                showInLegend: false,
-                data: [{
-                    x: Date.UTC(2010, 11, 1),
-                    title: 'A',
-                    text: 'Some event with a description'
-                }, {
-                    x: Date.UTC(2015, 11, 12),
-                    title: 'B',
-                    text: 'Some event with a description'
-                }, {
-                    x: Date.UTC(2017, 11, 22),
-                    title: 'C',
-                    text: 'Some event with a description'
-                }],
-                onSeries: 'dataseries',
-                shape: 'squarepin',
-                width: 16
+            name: 'Gold',
+            data: data,
+            id: 'dataseries',
+            tooltip: {
+                valueDecimals: 2
             }
-        ]
+        }]
     });
 });
 
@@ -138,33 +117,12 @@ Highcharts.getJSON(dataPathCrude, function(data) {
         },
 
         series: [{
-                name: 'Crude',
-                data: data,
-                id: 'dataseries',
-                tooltip: {
-                    valueDecimals: 2
-                }
-            },
-            {
-                type: 'flags',
-                showInLegend: false,
-                data: [{
-                    x: Date.UTC(2010, 11, 1),
-                    title: 'A',
-                    text: 'Some event with a description'
-                }, {
-                    x: Date.UTC(2015, 11, 12),
-                    title: 'B',
-                    text: 'Some event with a description'
-                }, {
-                    x: Date.UTC(2017, 11, 22),
-                    title: 'C',
-                    text: 'Some event with a description'
-                }],
-                onSeries: 'dataseries',
-                shape: 'squarepin',
-                width: 16
+            name: 'Crude',
+            data: data,
+            id: 'dataseries',
+            tooltip: {
+                valueDecimals: 2
             }
-        ]
+        }]
     });
 });

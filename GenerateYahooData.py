@@ -10,19 +10,20 @@ import yfinance as yf
 import pandas as pd
 from fredapi import Fred
 import time
-
+import math
 import json
 
 class TimeoutException(Exception):
     pass
 
 def GenerateHighchartVar(df, fieldX, fieldY):
-    df.reset_index()
+    df.dropna(how='any')
     init = '[' + '\n'
     s = ''
-    
+    #print(df)
     for i in range(len(df)):
-        s = s + '[' + str(df.loc[i, fieldX].timestamp() * 1000) + ',' + str(df.loc[i, fieldY]) + '],' + '\n'
+        if math.isnan(df.loc[i, fieldY]) == False:
+            s = s + '[' + str(df.loc[i, fieldX].timestamp() * 1000) + ',' + str(df.loc[i, fieldY]) + '],' + '\n'
     
     s = s[:-2]
     s = init + s + "]"
@@ -42,7 +43,7 @@ def generateMetadataFile(dict, fileName):
 
 # Yahoo Data
 # https://www.ssga.com/library-content/products/fund-docs/etfs/us/information-schedules/spdr-etf-listing.pdf
-@concurrent.process(timeout=60)
+@concurrent.process(timeout=30)
 def getYahooData(tickerDict):
     asOfDateTime = datetime.now()
     asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
@@ -57,9 +58,9 @@ def getYahooData(tickerDict):
         #rawData = yf.download(t)
         #indexedData = rawData['Adj Close'].tail(950).reset_index()
         indexedData = rawData[['Date',t]]
+        
         #indexedData = rawData['Adj Close'].reset_index()
         indexedData.columns = ['Date','Value']
-        indexedData = indexedData.dropna()
         highChartTS = GenerateHighchartVar(indexedData, 'Date','Value')
         generateJSONDataFile(name, highChartTS)
         
@@ -138,7 +139,7 @@ def function_7():
 
 if __name__ == "__main__":
     try:
-        #function_1()
+        function_1()
         function_2()
         function_3()
         function_4()
