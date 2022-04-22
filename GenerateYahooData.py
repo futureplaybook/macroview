@@ -59,7 +59,7 @@ def getYahooData(tickerDict):
         indexedData = rawData[['Date',t]]
         #indexedData = rawData['Adj Close'].reset_index()
         indexedData.columns = ['Date','Value']
-        indexedData.dropna()
+        indexedData = indexedData.dropna()
         highChartTS = GenerateHighchartVar(indexedData, 'Date','Value')
         generateJSONDataFile(name, highChartTS)
         
