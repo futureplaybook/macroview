@@ -14,9 +14,9 @@
 		
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:site" content="@thenextweb" />
-		<meta name="twitter:creator" content="@thenextweb" />
-		<meta name="twitter:title" content="Will Twitter’s ‘poison pill’ strategy stop Elon Musk’s hostile takeover?" />
+		<meta name="twitter:site" content="@futureplaybook" />
+		<meta name="twitter:creator" content="@futureplaybook" />
+		<meta name="twitter:title"  content=""/>
 		<meta name="twitter:image" content="https://img-cdn.tnwcdn.com/image/tnw?filter_last=1&amp;fit=1280%2C640&amp;url=https%3A%2F%2Fcdn0.tnwcdn.com%2Fwp-content%2Fblogs.dir%2F1%2Ffiles%2F2022%2F04%2FElontwitter.jpg&amp;signature=b1432befc16cd4c9543f1fb410ff7713" />
 		<meta name="twitter:description" content="Twitter adopted a so-called poison pill to make it much harder for Musk to take over the company — a finance expert explains how." />
 		
@@ -45,6 +45,10 @@
         </script>
         <script>
                 window.onload = function(){
+					document.getElementsByTagName('meta')["twitter:title"].content = "abcd";
+					document.getElementsByTagName('meta')["description"].content = "My new page description!!";
+					document.title = "My new Document Title!!";
+
                     document.getElementById("name").innerHTML = meta["displayName"];
                     document.getElementById("dateRange").innerHTML = meta["dataFrom"] + ' - ' + meta["dataTo"];
                     document.getElementById("currentUpdate").innerHTML = meta["currentUpdate"];
