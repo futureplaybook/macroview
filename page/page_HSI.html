@@ -11,20 +11,13 @@
         <!-- End Google Tag Manager -->
         <title>Econ Longview</title>
         <meta charset="utf-8">
-		<meta property="og:title" content=""/>
-        <meta property="og:description" content=""/>
+        <meta property="og:title" content="Econ Longview"/>
+        <meta property="og:image"
+              content="https://images.mktw.net/im-511973?size=1.777777777777778&width=800"/>
+        <meta property="og:description" content="Long term macroeconomic data and charts"/>
         <meta property="og:image:width" content="400" />
         <meta property="og:image:height" content="400" />
         <meta property="og:type" content="website"/>
-		
-		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:site" content="@futureplaybook" />
-		<meta name="twitter:creator" content="@futureplaybook" />
-		<meta name="twitter:title"  content=""/>
-		<meta name="twitter:image" content="https://img-cdn.tnwcdn.com/image/tnw?filter_last=1&amp;fit=1280%2C640&amp;url=https%3A%2F%2Fcdn0.tnwcdn.com%2Fwp-content%2Fblogs.dir%2F1%2Ffiles%2F2022%2F04%2FElontwitter.jpg&amp;signature=b1432befc16cd4c9543f1fb410ff7713" />
-		<meta name="twitter:description" content="Twitter adopted a so-called poison pill to make it much harder for Musk to take over the company — a finance expert explains how." />
-		
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet"
@@ -38,8 +31,8 @@
               href="https://cdn.jsdelivr.net/gh/vaakash/socializer@2f749eb/css/socializer.min.css">
         <link rel="stylesheet"
               href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-		<script src="/macroview/data/meta_HSI.js"></script>
-		<script src="/macroview/charts.js"></script>
+    <script src="/macroview/data/meta_HSI.js"></script>
+    <script src="/macroview/charts.js"></script>
         <script>
                 $(document).ready(function() {
                     $("#nav").load("/macroview/nav.html");
@@ -50,10 +43,6 @@
         </script>
         <script>
                 window.onload = function(){
-					document.getElementsByTagName('meta')["og:title"].content = "abcd";
-					document.getElementsByTagName('meta')["og:description"].content = "Mymymymy new page description!!";
-					document.title = "Mymymymy new Document Title!!";
-
                     document.getElementById("name").innerHTML = meta["displayName"];
                     document.getElementById("dateRange").innerHTML = meta["dataFrom"] + ' - ' + meta["dataTo"];
                     document.getElementById("currentUpdate").innerHTML = meta["currentUpdate"];
@@ -86,7 +75,7 @@
                     <table class="table table-sm table-hover">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 25%">Data history ranged between haha</th>
+                                <th scope="row" style="width: 25%">Data history ranged between</th>
                                 <td>
                                     <div id="dateRange"></div>
                                 </td>
