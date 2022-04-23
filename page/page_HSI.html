@@ -11,6 +11,11 @@
         <!-- End Google Tag Manager -->
         <title>Econ Longview</title>
         <meta charset="utf-8">
+		<meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="400" />
+        <meta property="og:type" content="website"/>
 		
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
@@ -45,9 +50,9 @@
         </script>
         <script>
                 window.onload = function(){
-					document.getElementsByTagName('meta')["twitter:title"].content = "abcd";
-					document.getElementsByTagName('meta')["description"].content = "My new page description!!";
-					document.title = "My new Document Title!!";
+					document.getElementsByTagName('meta')["og:title"].content = "abcd";
+					document.getElementsByTagName('meta')["og:description"].content = "Mymymymy new page description!!";
+					document.title = "Mymymymy new Document Title!!";
 
                     document.getElementById("name").innerHTML = meta["displayName"];
                     document.getElementById("dateRange").innerHTML = meta["dataFrom"] + ' - ' + meta["dataTo"];
