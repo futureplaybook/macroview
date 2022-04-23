@@ -43,7 +43,10 @@
         </script>
         <script>
                 window.onload = function(){
-                    document.querySelector('meta[property="og:description"]').setAttribute("content", "hahaha");
+                    document.getElementsByTagName('meta')["keywords"].content = "My new page keywords!!";
+                    document.getElementsByTagName('meta')["og:description"].content = "My new page description!!";
+                    document.title = "My new Document Title!!";
+
                     document.getElementById("name").innerHTML = meta["displayName"];
                     document.getElementById("dateRange").innerHTML = meta["dataFrom"] + ' - ' + meta["dataTo"];
                     document.getElementById("currentUpdate").innerHTML = meta["currentUpdate"];
