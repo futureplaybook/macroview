@@ -35,6 +35,10 @@ def generateJSONDataFile(fileName, content):
         outfile.write(content)
         
 def generateMetadataFile(dict, fileName):
+    tf = open('data/meta_' + fileName + '.json', "w")
+    json.dump(dict,tf)
+    tf.close()
+    
     with open('data/meta_' + fileName + '.js', 'w') as convert_file:
      convert_file.write('var meta = ')
      convert_file.write(json.dumps(dict))
