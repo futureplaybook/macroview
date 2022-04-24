@@ -45,8 +45,6 @@
         </script>
         <script>
                 window.onload = function(){
-                    document.getElementById("name").innerHTML = meta["displayName"];
-                    document.getElementById("dateRange").innerHTML = meta["dataFrom"] + ' - ' + meta["dataTo"];
                     document.getElementById("currentUpdate").innerHTML = meta["currentUpdate"];
                     document.getElementById("currentValue").innerHTML = meta["currentValue"].toFixed(2);
                     document.getElementById("min").innerHTML = meta["minValue"].toFixed(2) + ' (' + meta["minDate"] + ')';
@@ -73,13 +71,13 @@
                 <div class="col-10">
                     <!-- Main body -->
                     <div id="container" style="width:100%; height:400px;"></div>
-                    <b><div id="name"></div></b>
+                    <b>Live Cattle
+                    </b>
                     <table class="table table-sm table-hover">
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 25%">Data history ranged between</th>
-                                <td>
-                                    <div id="dateRange"></div>
+                                <td>01/2000 - 04/2022    
                                 </td>
                             </tr>
                             <tr>
