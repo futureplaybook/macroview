@@ -223,13 +223,13 @@ generateJSONDataFile(series, highChartTS)
 print('Successfully download Fred data')
 
 # %%
-durableGoods = fred.get_series('UMDMNO')
+series = 'UMDMNO'
+durableGoods = fred.get_series(series)
 durableGoodsYOY = durableGoods.pct_change(periods=12)*100
 durableGoodsYOY = durableGoodsYOY.dropna()
 durableGoodsYOY_reset = durableGoodsYOY.reset_index()
 durableGoodsYOY_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(durableGoodsYOY_reset, 'Date','Value')
-meta = generateFredMeta(durableGoodsYOY_reset, 'UMDMNO', 'US Durable Goods New Orders YoY')
-generateMetadataFile(meta, 'durableGoodsYOY')
-generateJSONDataFile('durableGoodsYOY', highChartTS)
-
+meta = generateFredMeta(durableGoodsYOY_reset, series, 'US Durable Goods New Orders YoY')
+generateMetadataFile(meta, series)
+generateJSONDataFile(series, highChartTS)
