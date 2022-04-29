@@ -1,4 +1,9 @@
-
+def generateHTML(inputFileName, metaDict):
+    metaFilename = inputFileName
+    
+    
+    
+    part1 = '''
     <html itemscope itemtype="http://schema.org/Article">
     <head>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1851265180397386" crossorigin="anonymous"></script>
@@ -12,10 +17,13 @@
         gtag('config', 'G-3KWHP1EFNP');
         </script>
         <title>Econ Longview</title>
-        <meta charset="utf-8">
-        <meta property="og:title" content="EURUSD"/>
-        <meta property="twitter:title" content="EURUSD"/>
-        <meta itemprop="name" content="EURUSD"/>
+        <meta charset="utf-8">'''
+    meta = '''
+        <meta property="og:title" content="''' + metaDict['displayName'] + '''"/>''' + '''
+        <meta property="twitter:title" content="''' + metaDict['displayName'] + '''"/>''' + '''
+        <meta itemprop="name" content="''' + metaDict['displayName'] + '''"/>'''
+    
+    scripts = '''
         <meta property="og:site_name" content="Econ Longview">
         <meta property="og:image"
               content="https://images.mktw.net/im-511973?size=1.777777777777778&width=800"/>
@@ -38,7 +46,17 @@
               href="https://cdn.jsdelivr.net/gh/vaakash/socializer@2f749eb/css/socializer.min.css">
         <link rel="stylesheet"
               href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-    <script src="/macroview/data/meta_EURUSD.js"></script>
+    '''
+
+    part2 = '''<script src="/macroview/data/'''
+
+    part4 = '''"></script>'''
+    
+    dataString = part2 + metaFilename + part4
+
+
+
+    part5 = '''
     <script src="/macroview/charts.js"></script>
         <script>
                 $(document).ready(function() {
@@ -76,13 +94,13 @@
                 <div class="col-10">
                     <!-- Main body -->
                     <div id="container" style="width:100%; height:400px;"></div>
-                    <b>EURUSD
+                    <b>''' + metaDict['displayName'] + '''
                     </b>
                     <table class="table table-sm table-hover">
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 25%">Data history ranged between</th>
-                                <td>01/1971 - 04/2022    
+                                <td>''' + metaDict['dataFrom'] + ' - ' + metaDict["dataTo"] + '''    
                                 </td>
                             </tr>
                             <tr>
@@ -172,4 +190,9 @@
         </body>
     </html>
 
-    
+    '''
+
+    htmlFileName = metaFilename.replace('meta_', 'page_').replace('.js', '.html')
+    file = open("page/"+htmlFileName,"w")
+    file.write(part1+meta+scripts+dataString+part5)
+    file.close()
