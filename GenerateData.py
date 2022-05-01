@@ -248,4 +248,45 @@ meta = generateFredMeta(durableGoodsYOY_reset, series, 'US Durable Goods New Ord
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
+
+# %%
+series = 'ICSA' 
+df = fred.get_series(series)
+df = df.dropna()
+df_reset = df.reset_index()
+df_reset = df_reset.dropna()
+df_reset.columns = ['Date','Value']
+highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
+des = "An initial claim is a claim filed by an unemployed individual after a separation from an employer. The claim requests a determination of basic eligibility for the Unemployment Insurance program."
+meta = generateFredMeta(df_reset, series, 'Initial Claims', des)
+generateMetadataFile(meta, series)
+generateJSONDataFile(series, highChartTS)
+
+
+# %%
+series = 'RRSFS' 
+df = fred.get_series(series)
+df = df.dropna()
+df_reset = df.reset_index()
+df_reset = df_reset.dropna()
+df_reset.columns = ['Date','Value']
+highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
+meta = generateFredMeta(df_reset, series, 'Retail Sales')
+generateMetadataFile(meta, series)
+generateJSONDataFile(series, highChartTS)
+
+
+# %%
+series = 'ALTSALES' 
+df = fred.get_series(series)
+df = df.dropna()
+df_reset = df.reset_index()
+df_reset = df_reset.dropna()
+df_reset.columns = ['Date','Value']
+highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
+des = "Light Weight Vehicle Sales: Autos and Light Trucks"
+meta = generateFredMeta(df_reset, series, 'Vehicle Sales', des)
+generateMetadataFile(meta, series)
+generateJSONDataFile(series, highChartTS)
+
 print('Successfully download Fred data')
