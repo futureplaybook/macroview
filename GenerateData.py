@@ -75,7 +75,7 @@ for t in tickers_allNasdaq:
         'maxDate' : (indexedData.iloc[indexedData['Value'].idxmax(),:]['Date']).strftime('%d-%m-%Y'),
         'maxValue' : indexedData.max()['Value'],
         'lastUpdate' : asOfDateTimeStr,
-        'des' : des[t],
+        'des' : des.get(t,""),
         'source' : 'Nasdaq',
         'dataFilename' : '/macroview/data/data_' + t.replace('/','_') + '.json'
         }
