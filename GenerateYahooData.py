@@ -78,6 +78,7 @@ def getYahooData(tickerDict):
             'minValue' : indexedData.min()['Value'],
             'maxDate' : (indexedData.iloc[indexedData['Value'].idxmax(),:]['Date']).strftime('%d-%m-%Y'),
             'maxValue' : indexedData.max()['Value'],
+            'des' : '',
             'lastUpdate' : asOfDateTimeStr,
             'source' : 'Internet',
             'dataFilename' : '/macroview/data/data_' + name + '.json'
