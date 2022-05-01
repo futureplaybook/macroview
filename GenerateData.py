@@ -92,7 +92,7 @@ print('Successfully download Nasdaq data')
 
 fred = Fred(api_key='d79cebb1e12819cd44ed96cc291f0f72')
 
-def generateFredMeta(indexedData, name = '', displayName = '', des = ''):
+def generateFredMeta(indexedData, name = '', displayName = '', des = ' '):
     asOfDateTime = datetime.now()
     asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
     meta = {'name': name,
