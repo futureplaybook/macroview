@@ -45,8 +45,14 @@ def generateMetadataFile(dict, fileName):
 # Nasdaq Data
 tickers_spRatio = {"MULTPL/SHILLER_PE_RATIO_MONTH" : 'Shiller PE Ratio',"MULTPL/SP500_DIV_YIELD_MONTH" : 'S&P500 Dividend Yield',"MULTPL/SP500_PE_RATIO_MONTH" : 'S&P 500 PE Ratio',"MULTPL/SP500_EARNINGS_YIELD_MONTH" : 'S&P 500 Earning Yield',"MULTPL/SP500_PBV_RATIO_QUARTER" : 'S&P 500 Price to Book Ratio',"MULTPL/SP500_PSR_QUARTER" : 'S&P 500 Price to Sales Ratio'}
 tickers_worldInflationYoY = {"RATEINF/INFLATION_USA" : 'US Inflation',"RATEINF/INFLATION_GBR" : 'UK Inflation',"RATEINF/INFLATION_EUR" : 'Euro Area Inflation',"RATEINF/INFLATION_JPN" : 'Japan Inflation'}
-
 tickers_allNasdaq = {**tickers_spRatio, **tickers_worldInflationYoY}
+
+des = {"MULTPL/SHILLER_PE_RATIO_MONTH" : "Shiller PE ratio for the S&P 500. Price earnings ratio is based on average inflation-adjusted earnings from the previous 10 years, known as the Cyclically Adjusted PE Ratio (CAPE Ratio), Shiller PE Ratio, or PE 10 FAQ. Data courtesy of Robert Shiller from his book, Irrational Exuberance.",
+       "MULTPL/SP500_DIV_YIELD_MONTH" : "S&P 500 dividend yield (12 month dividend per share)/price. Yields following March 2022 (including the current yield) are estimated based on 12 month dividends through March 2022, as reported by S&P. Sources: Standard & Poor's for current S&P 500 Dividend Yield. Robert Shiller and his book Irrational Exuberance for historic S&P 500 Dividend Yields.",
+       "MULTPL/SP500_PE_RATIO_MONTH" : "Price to earnings ratio, based on trailing twelve month as reported earnings. Current PE is estimated from latest reported earnings and current market price. Source: Robert Shiller and his book Irrational Exuberance for historic S&P 500 PE Ratio.",
+       "MULTPL/SP500_EARNINGS_YIELD_MONTH" : "S&P 500 Earnings Yield. Earnings Yield = trailing 12 month earnings divided by index price (or inverse PE) Yields following December, 2021 (including current yield) are estimated based on 12 month earnings through December, 2021 the latest reported by S&P. Source: Standard & Poor's",
+       "MULTPL/SP500_PBV_RATIO_QUARTER" : "S&P 500 price to book value ratio. Current price to book ratio is estimated based on current market price and S&P 500 book value as of December, 2021 the latest reported by S&P. Source: Standard & Poor's",
+       "MULTPL/SP500_PSR_QUARTER" : "S&P 500 Price to Sales Ratio (P/S or Price to Revenue). Current price to sales ratio is estimated based on current market price and 12 month sales ending December, 2021 the latest reported by S&P. Source: Standard & Poor's"}
 
 asOfDateTime = datetime.now()
 asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
@@ -69,6 +75,7 @@ for t in tickers_allNasdaq:
         'maxDate' : (indexedData.iloc[indexedData['Value'].idxmax(),:]['Date']).strftime('%d-%m-%Y'),
         'maxValue' : indexedData.max()['Value'],
         'lastUpdate' : asOfDateTimeStr,
+        'des' : des[t],
         'source' : 'Nasdaq',
         'dataFilename' : '/macroview/data/data_' + t.replace('/','_') + '.json'
         }
