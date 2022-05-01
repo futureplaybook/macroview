@@ -92,7 +92,7 @@ print('Successfully download Nasdaq data')
 
 fred = Fred(api_key='d79cebb1e12819cd44ed96cc291f0f72')
 
-def generateFredMeta(indexedData, name = '', displayName = ''):
+def generateFredMeta(indexedData, name = '', displayName = '', des = ''):
     asOfDateTime = datetime.now()
     asOfDateTimeStr = asOfDateTime.strftime("%d/%m/%Y %H:%M:%S")
     meta = {'name': name,
@@ -105,6 +105,7 @@ def generateFredMeta(indexedData, name = '', displayName = ''):
             'minValue' : indexedData.min()['Value'],
             'maxDate' : (indexedData.iloc[indexedData['Value'].idxmax(),:]['Date']).strftime('%d-%m-%Y'),
             'maxValue' : indexedData.max()['Value'],
+            'des' : des,
             'lastUpdate' : asOfDateTimeStr,
             'source' : 'Fred',
             'dataFilename' : '/macroview/data/data_' + name + '.json'
@@ -118,7 +119,8 @@ coreCPIYOY = coreCPIYOY.dropna()
 coreCPIYOY_reset = coreCPIYOY.reset_index()
 coreCPIYOY_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(coreCPIYOY_reset, 'Date','Value')
-meta = generateFredMeta(coreCPIYOY_reset, 'coreCPIYOY', 'US Core CPI')
+des = 'The "Consumer Price Index for All Urban Consumers: All Items Less Food & Energy" is an aggregate of prices paid by urban consumers for a typical basket of goods, excluding food and energy. This measurement, known as "Core CPI," is widely used by economists because food and energy have very volatile prices. The Bureau of Labor Statistics defines and measures the official CPI'
+meta = generateFredMeta(coreCPIYOY_reset, 'coreCPIYOY', 'US Core CPI', des)
 generateMetadataFile(meta, 'coreCPIYOY')
 generateJSONDataFile('coreCPIYOY', highChartTS)
 
@@ -129,7 +131,8 @@ headlineCPIYOY = headlineCPIYOY.dropna()
 headlineCPIYOY_reset = headlineCPIYOY.reset_index()
 headlineCPIYOY_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(headlineCPIYOY_reset, 'Date','Value')
-meta = generateFredMeta(headlineCPIYOY_reset, 'headlineCPIYOY', 'US Headline CPI')
+des = 'The Consumer Price Index for All Urban Consumers: All Items (CPIAUCSL) is a price index of a basket of goods and services paid by urban consumers. Percent changes in the price index measure the inflation rate between any two time periods. The most common inflation metric is the percent change from one year ago. It can also represent the buying habits of urban consumers. This particular index includes roughly 88 percent of the total population, accounting for wage earners, clerical workers, technical workers, self-employed, short-term workers, unemployed, retirees, and those not in the labor force.The CPIs are based on prices for food, clothing, shelter, and fuels; transportation fares; service fees (e.g., water and sewer service); and sales taxes. Prices are collected monthly from about 4,000 housing units and approximately 26,000 retail establishments across 87 urban areas. To calculate the index, price changes are averaged with weights representing their importance in the spending of the particular group. The index measures price changes (as a percent change) from a predetermined reference date. In addition to the original unadjusted index distributed, the Bureau of Labor Statistics also releases a seasonally adjusted index. The unadjusted series reflects all factors that may influence a change in prices. However, it can be very useful to look at the seasonally adjusted CPI, which removes the effects of seasonal changes, such as weather, school year, production cycles, and holidays.'
+meta = generateFredMeta(headlineCPIYOY_reset, 'headlineCPIYOY', 'US Headline CPI', des)
 generateMetadataFile(meta, 'headlineCPIYOY')
 generateJSONDataFile('headlineCPIYOY', highChartTS)
 
@@ -141,7 +144,8 @@ df = df.dropna()
 df_reset = df.reset_index()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, series, 'US 10-2 Year Treasury Yield Spread')
+des = 'The spread between 10-Year Treasury Constant Maturity and 2-Year Treasury Constant Maturity'
+meta = generateFredMeta(df_reset, series, 'US 10-2 Year Treasury Yield Spread', des)
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
@@ -183,7 +187,8 @@ df_reset = df.reset_index()
 df_reset = df_reset.dropna()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, series, 'US 10-Year Breakeven Inflation Rate')
+des = 'The breakeven inflation rate represents a measure of expected inflation derived from 10-Year Treasury Constant Maturity Securities and 10-Year Treasury Inflation-Indexed Constant Maturity Securities. The latest value implies what market participants expect inflation to be in the next 10 years, on average.'
+meta = generateFredMeta(df_reset, series, 'US 10-Year Breakeven Inflation Rate', des)
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
@@ -196,7 +201,8 @@ df_reset = df.reset_index()
 df_reset = df_reset.dropna()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, series, 'US Real GDP Growth (Percent Change from Preceding Period, SAAR)')
+des = "Gross domestic product (GDP) is the value of the goods and services produced by the nation's economy less the value of the goods and services used up in production. GDP is also equal to the sum of personal consumption expenditures, gross private domestic investment, net exports of goods and services, and government consumption expenditures and gross investment. Real values are inflation-adjusted estimates—that is, estimates that exclude the effects of price changes."
+meta = generateFredMeta(df_reset, series, 'US Real GDP Growth (Percent Change from Preceding Period, SAAR)', des)
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
@@ -210,7 +216,8 @@ df_reset = df.reset_index()
 df_reset = df_reset.dropna()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, series, 'US Unemployment Rate')
+des = "The unemployment rate represents the number of unemployed as a percentage of the labor force. Labor force data are restricted to people 16 years of age and older, who currently reside in 1 of the 50 states or the District of Columbia, who do not reside in institutions (e.g., penal and mental facilities, homes for the aged), and who are not on active duty in the Armed Forces."
+meta = generateFredMeta(df_reset, series, 'US Unemployment Rate', des)
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
@@ -223,11 +230,11 @@ df_reset = df.reset_index()
 df_reset = df_reset.dropna()
 df_reset.columns = ['Date','Value']
 highChartTS = GenerateHighchartVar(df_reset, 'Date','Value')
-meta = generateFredMeta(df_reset, series, 'US Total Nonfarm')
+des = "All Employees: Total Nonfarm, commonly known as Total Nonfarm Payroll, is a measure of the number of U.S. workers in the economy that excludes proprietors, private household employees, unpaid volunteers, farm employees, and the unincorporated self-employed. This measure accounts for approximately 80 percent of the workers who contribute to Gross Domestic Product (GDP). This measure provides useful insights into the current economic situation because it can represent the number of jobs added or lost in an economy. Increases in employment might indicate that businesses are hiring which might also suggest that businesses are growing. Additionally, those who are newly employed have increased their personal incomes, which means (all else constant) their disposable incomes have also increased, thus fostering further economic expansion."
+meta = generateFredMeta(df_reset, series, 'US Total Nonfarm', des)
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
 
-print('Successfully download Fred data')
 
 # %%
 series = 'UMDMNO'
@@ -240,3 +247,5 @@ highChartTS = GenerateHighchartVar(durableGoodsYOY_reset, 'Date','Value')
 meta = generateFredMeta(durableGoodsYOY_reset, series, 'US Durable Goods New Orders YoY')
 generateMetadataFile(meta, series)
 generateJSONDataFile(series, highChartTS)
+
+print('Successfully download Fred data')
